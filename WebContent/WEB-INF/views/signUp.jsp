@@ -334,7 +334,7 @@
          <div class="form-group sizedown">
             <div class="input-group">
             <span class="input-group-addon" style="color:#6b8e23;"><i class="fas fa-user-circle fa-2x"></i></span>
-            <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요">
+            <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요(한글, 영문  3~16자)">
             <input type = "button" id="message" value="중복확인">
             </div>
             <span class="ckid"></span>
@@ -343,7 +343,7 @@
          <div class="form-group sizedown">
          <div class="input-group">
             <span class="input-group-addon" style="color:#6b8e23;"><i class="fas fa-lock fa-2x"></i></span>
-            <input type="text" class="form-control" name="pwd" id="pwd" placeholder="비밀번호를 입력하세요">
+            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호를 입력하세요(한글, 영문  8~16자)">
             <div class="ckpwd"></div>
          </div>
          </div>
@@ -352,7 +352,7 @@
          <div class="input-group">
             <span class="input-group-addon" style=" color:#6b8e23;">
             <i class="fas fa-lock fa-2x"></i></span>
-            <input type="text" class="form-control" name="pwdcheck" id="pwdcheck" placeholder="비밀번호를 한번 더 입력하세요.">
+            <input type="password" class="form-control" name="pwdcheck" id="pwdcheck" placeholder="비밀번호를 한번 더 입력하세요.(한글, 영문  8~16자)">
             <div class="ckpwdcheck"></div>
          </div>
          </div>

@@ -302,7 +302,7 @@ public class BoardDao {
  
    
    
-   public int editFile(File file, int fidx) {   //파일글 수정 수연
+   public int editFile(File file, String fidx) {   //파일글 수정 수연
        PreparedStatement pstmt = null;
        Connection conn = null;
        String sql = "update fileupload set fidx=?, oriname=?, savename=?, fsize=?, cocode=?  where fidx=?";   
@@ -311,7 +311,7 @@ public class BoardDao {
        try {
           conn = ds.getConnection();
           pstmt = conn.prepareStatement(sql);
-          pstmt.setInt(1, fidx);
+          pstmt.setInt(1, file.getFidx());
           pstmt.setString(2, file.getOriname());
           pstmt.setString(3, file.getSavename());
           pstmt.setInt(4, file.getFsize());
@@ -912,7 +912,7 @@ public class BoardDao {
 	      ResultSet rs = null;
 	      
 	      ArrayList<File> boardlist =new ArrayList<>();
-	      String sql = "select b.id, b.idx, b.writedate, b.title, b.readnum, f.savename from board b join fileupload f on b.idx = f.idx where b.bcode=? and b.id=? ORDER BY b.writedate desc";
+	      String sql = "select b.id, b.idx, b.writedate, b.title, b.readnum, f.savename from board b join fileupload f on b.idx = f.idx where b.bcode=? and b.id=? and b.cocode=0 ORDER BY b.writedate desc";
 	      		   
 	   
 	      try {
@@ -1246,4 +1246,3 @@ public class BoardDao {
 			
 		return list;
 	}
-}
