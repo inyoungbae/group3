@@ -69,7 +69,7 @@
 }
 
 .mail-box .sm-side .user-head {
-	background: none repeat scroll 0 0 #00a8b3;
+	background: none repeat scroll 0 0 #125448;
 	border-radius: 4px 0 0;
 	color: #fff;
 	min-height: 80px;
@@ -208,9 +208,9 @@ ul.labels-info li a i {
 }
 
 .inbox-head {
-	background: none repeat scroll 0 0 #41cac0;
+	background: none repeat scroll 0 0 #125448;
 	border-radius: 0 4px 0 0;
-	color: #341a79;
+	color: #fff;
 	min-height: 80px;
 	padding: 20px;
 }
@@ -233,7 +233,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head .sr-btn {
-	background: none repeat scroll 0 0 #00a6b2;
+	background: none repeat scroll 0 0 #eaedea;
 	border: medium none;
 	border-radius: 0 4px 4px 0;
 	color: #fff;
@@ -853,29 +853,30 @@ function message() {
 <body>
 	<div class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(img/bg-img/hero.jpg)">
-		<section style='padding-top: 150px; padding-bottom: 100px'>
+		<section style='padding-top: 300px; padding-bottom: 100px'>
 			<div class="container">
 
 				<div class="mail-box">
 					<aside class="sm-side">
 						<div class="user-head">
-							<a class="inbox-avatar" href="javascript:;"
+							<!-- <a class="inbox-avatar" href="javascript:;"
 								style="color: #341a79;"> <img width="64" height="60"
 								src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
-							</a>
+							</a> -->
 							<div class="user-name">
-								<h5>
+								<h2>Notice Board
 									<a href="#"></a>
-								</h5>
+								</h2>
 								<span><a href="#"></a></span>
 							</div>
-							<a class="mail-dropdown pull-right" href="javascript:;"> <i
+							<!-- <a class="mail-dropdown pull-right" href="javascript:;"> 
+							<i
 								class="fa fa-chevron-down"></i>
-							</a>
+							</a> -->
 						</div>
 						<div class="inbox-body">
-							<a href="#myModal" data-toggle="modal" title="Compose"
-								class="btn btn-compose"> Compose </a>
+							<!-- <a href="#myModal" data-toggle="modal" title="Compose"
+								class="btn btn-compose"> Compose </a> -->
 							<!-- Modal -->
 							<div aria-hidden="true" aria-labelledby="myModalLabel"
 								role="dialog" tabindex="-1" id="myModal" class="modal fade"
@@ -937,9 +938,9 @@ function message() {
 							<!-- /.modal -->
 						</div>
 						<ul class="inbox-nav inbox-divider">
-							<li class="active"><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
-									Q&A <span class="label label-danger pull-right">2</span></a></li>
-							<li><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
+							<li><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
+									Q&A <!-- <span class="label label-danger pull-right">2</span></a></li> -->
+							<li  class="active"><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
 							</li>
 						</ul>
 
@@ -951,7 +952,7 @@ function message() {
 
 					<aside class="lg-side">
 						<div class="inbox-head">
-							<h3>Notice 게시판</h3>
+							<h3></h3>
 							<form action="#" class="pull-right position">
 								<div class="input-append">
 									<input type="text" class="sr-input" placeholder="Search Mail">
@@ -1102,24 +1103,32 @@ function message() {
 											<td class="view-message">${blist.writedate}</td>
 											<td class="view-message  text-right">${blist.readnum}</td>
 
-											<c:if test="${blist.id == sessionScope.id}" var="myres"
-												scope="request">
-												<c:choose>
-													<c:when test="${blist.cocode == 1 }">
-														<td class="view-message  text-right"></td>
-														<td class="view-message  text-right"></td>
-												 	</c:when>
-													<c:otherwise>
-														<td class="view-message  text-right"><a
-															href="boardDetail.do?bcode=${blist.bcode}&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0"
-															class="btn mini blue">수정</a></td>
-														<td class="view-message  text-right"><a
-															href="boardDelete.do?bcode=${blist.bcode}&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0"
-															class="btn mini blue" onclick="return confirm(message())">삭제</a>
-														</td>
-													</c:otherwise>
-												</c:choose>
-											</c:if>
+											<c:choose>
+                                 <c:when test="${blist.id == sessionScope.id}">
+                                 <c:choose>
+                                       <c:when test="${blist.cocode == 1 }">
+                                          <td class="view-message  text-right"></td>
+                                             
+                                          <td class="view-message  text-right"></td>
+                                       </c:when>
+                                       <c:otherwise>
+                                          <td class="view-message  text-right"><a
+                                             href="boardDetail.do?bcode=401&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+                                             class="btn mini blue">수정</a></td>
+                                          <td class="view-message  text-right"><a
+                                             href="boardDelete.do?bcode=401&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+                                             class="btn mini blue" onclick="return confirm(message())">삭제</a>
+                                          </td>
+                                       </c:otherwise>
+                                    </c:choose>
+                                 
+                                 </c:when>
+                                 <c:otherwise>
+                                 <td class="view-message  text-right"></td>
+                                             
+                                          <td class="view-message  text-right"></td>
+                                 </c:otherwise>
+                                 </c:choose>
 
 										</tr>
 									</c:forEach>
