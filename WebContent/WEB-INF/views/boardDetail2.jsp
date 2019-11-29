@@ -102,7 +102,12 @@ $(function(){
 		$('#boardtitle').text("Notice");
 	}
 	
+	if(${sessionScope.grade}  == 2){
+		$('#replyButton').attr("display", "block");
+	}
+	
 });
+
 
 </SCRIPT>  
 </HEAD>
@@ -139,6 +144,11 @@ article {
 .right {
    width: 80%;
 }
+
+#replyButton {
+display : none;
+}
+
 </style>
 <body>
 
@@ -221,7 +231,7 @@ article {
                         <input type="hidden" name="ps" value='${board.ps}'>
                         <input type="hidden" name="zcode" value='0'>
                        
-        				 <button type=submit  class="btn dorne-btn" style="width: 200px;"  >
+        				 <button id="replyButton" type=submit  class="btn dorne-btn" style="width: 200px;"  >
                                  <i class="far fa-check-circle"></i>&nbsp;&nbsp;답글쓰기
                               </button>
       					</form>
