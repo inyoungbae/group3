@@ -929,6 +929,13 @@ function search() {
 	
 }
 
+function writeOk() {
+	if('${sessionScope.id}'==''){
+		   alert('로그인이 필요합니다');
+		   return false;
+	   }
+}
+
 </script>
 
 <jsp:include page="/common/top.jsp"></jsp:include>
@@ -1079,22 +1086,16 @@ function search() {
 									</ul>
 								</div>
 								<div class="btn-group">
-									<a data-toggle="dropdown" href="#" class="btn mini blue">
-										Move to <i class="fa fa-angle-down "></i>
+									<a href="boardList.do?zcode=0&bcode=401&tcode=0&cp=1&ps=${requestScope.ps }&idx=0&id=${sessionScope.id}" class="btn mini blue">
+										전체글 보기 
 									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#"><i class="fa fa-pencil"></i> Mark as
-												Read</a></li>
-										<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
-										<li class="divider"></li>
-										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
-									</ul>
+									
 								</div>
 
 								<div class="btn-group">
 									<a
 										href="gotoWrite.do?zcode=0&bcode=401&tcode=0&cp=1&ps=5&idx=0&id=${sessionScope.id}"
-										class="btn mini blue">글쓰기</a>
+										class="btn mini blue" onclick="return writeOk()">글쓰기</a>
 								</div>
 								<c:set var="pagesize" value="${param.ps }"></c:set>
 								<div class="btn-group">
@@ -1174,7 +1175,7 @@ function search() {
 														<b>**삭제된 글입니다**</b>
 													</c:when>
 													<c:otherwise>
-														<a href="boardDetail.do?edit=0&idx=${blist.idx}&bcode=401&cp=${cp}&ps=${ps}&zcode=0">  ${blist.title}</a>
+														<a href="boardDetail.do?edit=0&idx=${blist.idx}&bcode=401&cp=${cp}&ps=${ps}&zcode=0" onclick="return writeOk()">  ${blist.title}</a>
 													</c:otherwise>
 												</c:choose></td>
 

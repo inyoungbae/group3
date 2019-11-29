@@ -18,22 +18,22 @@
                         <div class="collapse navbar-collapse" id="dorneNav">
                             <ul class="navbar-nav mr-auto" id="dorneMenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="GoMain.do" style="font-size: 20px">Home</a>
+                                    <a class="nav-link" href="GoMain.do">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="MainCampingview.do" style="font-size: 20px">Search</a>
+                                    <a class="nav-link" href="MainCampingview.do" >Search</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="ReviewList.do?bcode=202&tcode=0&cp=1&ps=5" style="font-size: 20px">캠핑장 후기</a>
+                                    <a class="nav-link" href="ReviewList.do?bcode=202&tcode=0&cp=1&ps=5" >Review</a>
                                 </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="TradeList.do?bcode=102" style="font-size: 20px">판매페이지</a>
+                                     <a class="nav-link" href="TradeList.do?bcode=102">Trade</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="boardList.do?bcode=303&cp=1&ps=10&zcode=0" style="font-size: 20px">Notice</a>
+                                <a class="nav-link" href="boardList.do?bcode=303&cp=1&ps=10&zcode=0">Notice</a>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link" href="boardList.do?bcode=401&cp=1&ps=10&zcode=0" style="font-size: 20px">Q&A</a>
+                                <a class="nav-link" href="boardList.do?bcode=401&cp=1&ps=10&zcode=0" >Q&A</a>
                                 </li>
                                  <li>
                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,26 +41,26 @@
 	                                <c:choose>
  	   								<c:when test="${id!=null && grade == '2'}">
  	   								<li class="nav-item">
- 	   								<a class="nav-link" href="LogOut.do" style="font-size: 20px">Logout</a>
+ 	   								<a class="nav-link" href="LogOut.do" >Logout</a>
  	   								</li>
  	   								<li class="nav-item">
- 	   								<a class="nav-link" href="GetMemberList.do" style="font-size: 20px">Memberlist</a>
+ 	   								<a class="nav-link" href="GetMemberList.do" >Memberlist</a>
  	   								</li>
 	                                </c:when>  
 	                                 <c:when test="${id!=null && grade == '1'}">
 	                                 <li class="nav-item">
-	                                 <a class="nav-link" href="LogOut.do" style="font-size: 20px">Logout</a>
+	                                 <a class="nav-link" href="LogOut.do" >Logout</a>
 	                                 </li>
 	                                 <li class="nav-item">
-	                                 <a class="nav-link" href="MyPage.do" style="font-size: 20px">Mypage</a>
+	                                 <a class="nav-link" href="MyPage.do">Mypage</a>
 	                                 </li>
                                     	</c:when> 
    										<c:otherwise>
    										<li class="nav-item">
-   										<a class="nav-link" href="LogIn.do" style="font-size: 20px">Login</a>
+   										<a class="nav-link" href="LogIn.do" >Login</a>
    										</li>
    										<li class="nav-item">
-   										<a class="nav-link" href="SignUp.do" style="font-size: 20px">Signup</a>
+   										<a class="nav-link" href="SignUp.do" >Signup</a>
    										</li>
                               	</c:otherwise>
 								</c:choose>
