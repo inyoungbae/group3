@@ -193,7 +193,7 @@ padding-top:3%;
 padding-left: 5%;
 }
 .col-sm-8{
-
+ 
 }
 </style>
 <body>
