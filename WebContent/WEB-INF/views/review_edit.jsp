@@ -65,8 +65,6 @@
 };
 
 
-
-
     
 	function editclick(){
     if($('#title')==null){
@@ -139,6 +137,7 @@ article {
 <c:set var="review" value="${requestScope.reviewedit}"></c:set>
 <script type="text/javascript">
 console.log(${review.fidx});
+console.log(${review.savename});
 </script>
          <div id="writeForm" class="col-sm-12" style="height: 80%;">
            
@@ -165,19 +164,11 @@ console.log(${review.fidx});
 
                         <tr>
                            <td><h6>File</h6></td>
-                           
                            <td><input type="file" name="filename" value="${review.savename}">
                            <img id="previewImage" src="upload/${review.savename}" width="100" alt="로컬에 있는 이미지가 보여지는 영역" onerror="this.src='./img/bg-img/error.png'">
 							</td>
                         </tr>
                         <tr>
-                        
-   <%--                  <tr id="dataForM">
-                        <!-- 202 : 후기파일 게시판  -->
-                        <td width="80%" align="left"><input type="hidden" id="bcode"  name="bcode" value='${param.bcode}'></td>
-                        <!-- tcode : 0 거래없음 -->
-                        <td width="80%" align="left"><input type="hidden" id="tcode" type="text" name="tcode" value='${param.tcode}'></td>                      
-                    </tr> --%>
                         
 						<tr>
                            <td colspan="2" class="text-center">

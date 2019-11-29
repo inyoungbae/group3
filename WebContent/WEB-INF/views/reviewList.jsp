@@ -71,6 +71,17 @@
 
 </style>
 
+<script type="text/javascript">
+
+function writeOk() {
+	   if('${sessionScope.id}'==''){
+	         alert('로그인이 필요합니다');
+	         return false;
+	      }
+	}
+
+</script>
+
 </head>
 
 <jsp:include page="/common/top.jsp"></jsp:include>
@@ -100,7 +111,7 @@
          <div style="text-align: center;">
             <a href="ShowReviewWrite.do?bcode=202&tcode=0" class="btn mini blue">
                <button type="submit" id="reviewbtn" class="btn dorne-btn"
-                  style="width: 200px; " onclick="check()">
+                  style="width: 200px; " onclick="return writeOk()">
                   <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;WRITE
                </button>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -109,22 +120,10 @@
                <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:15%; height:52px;">
                     <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
 
-
-
-
 <br>
 <br>
 <hr>
 
-<!--             <div class="single-widget search-widget">
-               <form class="example" style="margin: auto; max-width: 500px">
-         
-                  <input type="text" placeholder="Search Posts" name="search2">
-                  <button type="submit">
-                     <i class="fa fa-search" style="color: #6b8e23"></i>
-                  </button>
-               </form>
-            </div> -->
             <div class="container" style="margin-bottom: 5%">
                <div class="row">
                   <div class="col-sm ">PageSize설정:</div>
@@ -198,7 +197,7 @@
                            <div class="title d-flex flex-row justify-content-between">
                               <div class="titles" id="titlehover" style="font-size: 13px;">
                                  <!-- 제목 -->
-                                 <a href="ShowReviewDetail.do?idx=${list.idx}&cp=${cp}&ps=${ps}">
+                                 <a href="ShowReviewDetail.do?idx=${list.idx}&cp=${cp}&ps=${ps}" onclick="return writeOk()">
                                     <h4>&nbsp;&nbsp;${list.title}</h4>
                                  </a>
                               </div>
@@ -272,10 +271,9 @@
                              + '</div><div class="details" style="margin-top: 1%">'
                              + '<div class="title d-flex flex-row justify-content-between">'
                              + '<div class="titles" id="titlehover" style="font-size: 13px;">'
-                             + '<a href="ShowReviewDetail.do?idx=${list.idx}&cp=${requestScope.cp}&ps=${requestScope.ps}">'
+                             + '<a href="ShowReviewDetail.do?idx=${list.idx}&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
                              + '<h4>&nbsp;&nbsp;'+object.title+'</h4></a></div></div>'
                              + '<p style="text-align: left; font-size: 13px;">'
-                             //+ object.content
                              + '<p class="address" style="text-align: left">'
                              + '&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;'
                              + object.id
