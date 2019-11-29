@@ -215,15 +215,15 @@ padding-left: 5%;
 <div class="hero-search-form">
     <!-- Tabs -->
 <div class="nav nav-tabs" id="heroTab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true" style ="background-color:#6b8e23;">Places</a>
+    <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true" style ="background-color:#125448;">Places</a>
 <!--   <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a> -->
 </div>
 <!-- Tabs Content -->
 <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab" style ="background-color:#ffefd5;">
-<h6 style ="color:#6b8e23;">캠핑장을 검색해서 찾아보세요</h6>
-    <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" value="${param.campgnm }" style ="width:70%; height:52px;">
-<button type="button" id="namebutton" name="namebutton" class="btn dorne-btn" style ="width: 200px; background-color:#6b8e23;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+    <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab" style ="background-color: #eaedea;">
+<h6 style ="color: #333333;">캠핑장을 검색해서 찾아보세요</h6>
+    <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" value="${param.campgnm }" style ="width:70%; height:52px; border:0;">
+<button type="button" id="namebutton" name="namebutton" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
 <br><br>
     <select class="custom-select" id="sigun2" name="sigun2" style ="width: 34.8%;">
     <option value="${param.sigun}">선택하세요</option>
@@ -231,7 +231,7 @@ padding-left: 5%;
 <select class="custom-select" id="si2" name="si2" style ="width: 34.8%;">
     <option value="${param.si}">선택하세요</option>
 </select>
-<button type="button" id="sibutton" name="sibutton" class="btn dorne-btn" style ="width: 200px; background-color:#6b8e23;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+<button type="button" id="sibutton" name="sibutton" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
         </div>
     </div>
 </div>

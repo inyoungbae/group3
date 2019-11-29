@@ -26,7 +26,7 @@
     padding: 0;
 }
 
-# preloader {
+/* # preloader {
     overflow: hidden;
     background-color: #6b8e23;
     height: 100%;
@@ -36,7 +36,7 @@
     width: 100%;
     z-index: 99999;
 }
-
+ */
 .dorne-load {
     width: 60px;
     height: 60px;
@@ -294,7 +294,7 @@ li {
 }
 
 .section-heading.dark span {
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .section-heading.dark h4 {
@@ -310,7 +310,7 @@ li {
     font-size: 18px;
     right: 0;
     width: 40px;
-    background-color: #6b8e23;
+    background-color: #125448;
     color: #fff;
     text-align: center;
     height: 40px;
@@ -351,13 +351,13 @@ li {
 }
 
 .bg-default {
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .dorne-btn {
     min-width: 180px;
     height: 52px;
-    background-color:  #6b8e23;
+    background-color:  #125448;
     border-radius: 0;
     padding: 0 15px;
     line-height: 50px;
@@ -382,7 +382,7 @@ li {
     position: fixed;
     z-index: 99999;
     height: 120px;
-    background-color: #6b8e23;
+    background-color: #125448;
     top: -200px;
     left: 0;
     -webkit-transition-duration: 500ms;
@@ -487,7 +487,7 @@ li {
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-item.active .nav-link {
-    color: #6b8e23;
+    color: #125448;
 }
 
 .dorne-search-btn > a,
@@ -512,7 +512,7 @@ li {
 }
 
 .dropdown-item:hover {
-    background-color: #6b8e23;
+    background-color: #125448;
     color: #fff;
 }
 
@@ -568,7 +568,7 @@ li {
 
 .hero-search-form .nav-tabs .nav-link.active {
     color: #fff;
-    background-color: #6b8e23;
+    background-color: #125448;
     border-color: transparent;
 }
 
@@ -648,7 +648,7 @@ li {
 }
 
 .single-catagory-area {
-    background-color: #6b8e23;
+    background-color: #125448;
     text-align: center;
     padding: 60px 15px;
     -webkit-transition-duration: 500ms;
@@ -684,7 +684,7 @@ li {
 }
 
 .about-content span {
-    color: #6b8e23;
+    color: #125448;
 }
 
 .about-content p {
@@ -705,7 +705,7 @@ li {
     height: 70px;
     display: inline-block;
     line-height: 70px;
-    background-color: #6b8e23;
+    background-color: #125448;
     padding: 0 50px;
     font-size: 14px;
     text-transform: uppercase;
@@ -759,7 +759,7 @@ li {
     position: absolute;
     top: 20px;
     left: 20px;
-    background-color: #6b8e23;
+    background-color: #125448;
     height: 35px;
     font-size: 12px;
     line-height: 35px;
@@ -791,12 +791,12 @@ li {
 }
 
 .feature-favourite > a {
-    color: #6b8e23;
+    color: #125448;
     font-size: 24px;
 }
 
 .single-features-area:hover {
-    background-color: #6b8e23;
+    background-color: #125448;
     box-shadow: 3px 15px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -813,7 +813,7 @@ li {
     color: #fff;
     height: 70px;
     line-height: 70px;
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .ratings-map-area > a:last-child {
@@ -839,7 +839,7 @@ li {
 }
 
 .single-features-area:hover .ratings-map-area > a:last-child {
-    background-color: #30c0a3;
+    background-color: #125448;
 }
 
 /* Feature Events Area CSS */
@@ -877,7 +877,7 @@ li {
 }
 
 .date-map-area > a:last-child {
-    background-color: #30c0a3;
+    background-color: #125448;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -945,7 +945,7 @@ li {
 }
 
 .single-feature-events-area:hover {
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .single-feature-events-area:hover .feature-events-content h5,
@@ -1078,7 +1078,7 @@ li {
 }
 
 .explore-search-form {
-    background-color: #6b8e23;
+    background-color: #125448;
     padding: 50px 40px;
 }
 
@@ -1111,7 +1111,7 @@ li {
 
 .explore-search-form .nav-tabs .nav-link.active {
     color: #fff;
-    background-color: #6b8e23;
+    background-color: #125448;
     border-color: transparent;
 }
 
@@ -1135,7 +1135,7 @@ li {
 
 .explore-search-form .custom-control-description {
     font-size: 11px;
-    color:#6b8e23;
+    color:#125448;
     font-weight: 600;
     line-height: 24px;
 }
@@ -1178,22 +1178,22 @@ li {
 }
 
 .map-ratings-review-area > a:nth-child(2) {
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .map-ratings-review-area > a:last-child {
-    background-color: #6b8e23;
+    background-color: #125448;
     color: #2a2a2a;
 }
 
 .book-a-table-widget {
     padding: 50px 30px;
-    background-color: #6b8e23;
+    background-color: #125448;
 }
 
 .book-a-table-widget h6 {
     font-size: 18px;
-    color: #6b8e23;
+    color: #125448;
     margin-bottom: 30px;
 }
 
@@ -1230,7 +1230,7 @@ li {
 }
 
 .opening-hours li:first-child p {
-    color: #6b8e23;
+    color: #125448;
 }
 
 .opening-hours li:last-child p {
@@ -1309,11 +1309,11 @@ li {
 
 .single-listing-nav li.active a,
 .single-listing-nav li a:hover {
-    color:#6b8e23;
+    color:#125448;
 }
 
 .single-listing-nav li.active a:after {
-    background-color:#6b8e23;
+    background-color:#125448;
     content: '';
     bottom: -2px;
     left: 0;

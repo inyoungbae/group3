@@ -45,7 +45,7 @@ public class TradeEditOkService implements Action { //수여닝
 				new DefaultFileRenamePolicy());
 				
 				String idx = multi.getParameter("idx");
-				String fidx = multi.getParameter("fidx");
+	            int fidx = Integer.parseInt(multi.getParameter("fidx"));
 				String id = multi.getParameter("id");
 				String bcode = multi.getParameter("bcode");
 				String tcode = multi.getParameter("tcode");
@@ -73,7 +73,7 @@ public class TradeEditOkService implements Action { //수여닝
 				//System.out.println("board 값들 다 들어오나???");
 				
 				File file = new File();
-				//file.setFidx(Integer.parseInt(fidx));
+				file.setFidx(fidx);
 				file.setOriname(orifilename);
 			    file.setSavename(sfilename);
 			    //System.out.println("파일도 읽어오나?");
