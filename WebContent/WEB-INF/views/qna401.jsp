@@ -484,14 +484,21 @@ ul {
 </style>
 <script type="text/javascript">
 
-$(function() {	
+function myTotal() {
 	var pagesize = $('#pagesize :selected').val();
 	var currentpage = Math.ceil($('#indexend').text() / pagesize);
 	
-	console.log("온로드 하면 실행 되는 함수" + pagesize);
+	console.log("온로드 하면 실행 되는 함수 토탈 카운트를 위해" + pagesize);
 	console.log(currentpage);
 	
-	var page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 401, "zcode" : 2}
+	var page_data;
+	var searchword = $('#searchword').val();
+	console.log(searchword);
+	if(searchword == ""){
+		page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 401, "zcode" : 2}
+	}else{
+		page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 401, "zcode" : 2, "sw" : searchword}
+	}
 	var mytbc;
 	$.ajax({
 				url:"boardList.do",
@@ -511,6 +518,11 @@ $(function() {
 	
 			});	
 	
+}
+
+
+$(function () {	
+	myTotal();
 });
 
 
@@ -575,7 +587,7 @@ function showlist() {
                         if(obj.cocode == 1) {
                         	mytable += "<b>**삭제된 글입니다**</b>"
                         }else{
-                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'>"+ obj.title + "</a>";
+                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
                         }
                         
                         mytable += "</td>";
@@ -686,7 +698,7 @@ function downpage() {
 	                        if(obj.cocode == 1) {
 	                        	mytable += "<b>**삭제된 글입니다**</b>"
 	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'>"+ obj.title + "</a>";
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
@@ -796,7 +808,7 @@ function uppage() {
 	                        if(obj.cocode == 1) {
 	                        	mytable += "<b>**삭제된 글입니다**</b>"
 	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'>"+ obj.title + "</a>";
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
@@ -847,6 +859,7 @@ function message() {
 }
 
 function search() {
+	event.preventDefault();
 	var searchword = $('#searchword').val();
 	console.log(searchword);
 	var pagesize = $('#pagesize :selected').val();
@@ -892,7 +905,7 @@ function search() {
 	                        if(obj.cocode == 1) {
 	                        	mytable += "<b>**삭제된 글입니다**</b>"
 	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'>"+ obj.title + "</a>";
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
@@ -1041,7 +1054,7 @@ function writeOk() {
 					<aside class="lg-side">
 						<div class="inbox-head">
 							<h3>Q&A 게시판 무엇이든 물어보세요</h3>
-							<form action="#" class="pull-right position">
+							<form  class="pull-right position" onSubmit="JavaScript:search()">
 								<div class="input-append">
 									<input type="text" id="searchword" class="sr-input" placeholder="게시판 검색">
 									<button class="btn sr-btn" type="button" onclick="search()">
@@ -1183,12 +1196,12 @@ function writeOk() {
 												class="fa fa-paperclip"></i></td>
 											<td class="view-message">${blist.writedate}</td>
 											<td class="view-message  text-right">${blist.readnum}</td>
-
-											<c:if test="${blist.id == sessionScope.id}" var="myres"
-												scope="request">
-												<c:choose>
+											<c:choose>
+											<c:when test="${blist.id == sessionScope.id}">
+											<c:choose>
 													<c:when test="${blist.cocode == 1 }">
 														<td class="view-message  text-right"></td>
+															
 														<td class="view-message  text-right"></td>
 													</c:when>
 													<c:otherwise>
@@ -1201,7 +1214,17 @@ function writeOk() {
 														</td>
 													</c:otherwise>
 												</c:choose>
-											</c:if>
+											
+											</c:when>
+											<c:otherwise>
+											<td class="view-message  text-right"></td>
+															
+														<td class="view-message  text-right"></td>
+											</c:otherwise>
+											</c:choose>
+											
+
+											
 
 										</tr>
 									</c:forEach>
