@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -332,11 +331,24 @@ h2 {
                 <div class="col-12 col-lg-6">
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.4s">
                     <h4 style="text-align: center; color: white">공지사항</h4>
-                        <a href="#"><img src="img/bg-img/2.jpg" alt="" style ="width:500px; height:240px;"></a>
+                        <table class="table" id="notice" style="background-color: white">
+                        	<tr style="text-align: center;">
+                        	<th>제목</th>
+                        	<th>글쓴이</th>
+                        	<th>작성일</th>
+                        	</tr>
+                        </table>
                     </div>
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.6s">
-                    <h4 style="text-align: center; color: white">주간 날씨</h4>
-                       <a href="#"><img src="img/bg-img/3.jpg" alt="" style ="height:300px; width:500px;"></a>
+                    <h4 style="text-align: center; color: white">오늘의 날씨</h4>
+                       <table id=wtable class='table' style="background-color: white;">
+                       <tr id=wcity>
+                       </tr>
+                       <tr id=wtem>
+                       </tr>
+                       <tr id=wimg>
+                       </tr>
+                       </table>
                     </div>
                 </div>
             </div>
@@ -353,7 +365,26 @@ h2 {
     <script type="text/javascript">
     $(function(){
        console.log("여보세요?");
-
+       $.ajax({
+           url:"boardList.do",
+          dataType:"JSON",
+          data: {"bcode" : 303,
+        		"ps" : 5,
+        		"cp" : 1,
+        		"zcode" : 1
+          },
+          type:"get",
+          success: function(data){
+        	  console.log("햐햐햐햫햐"+data);
+        	  $.each(data, function(index, obj){
+        		  console.log(obj);
+        		  $('#notice').append("<tr id='no"+index+"'></tr>");
+        		  $('#no'+index).append("<td><a href='boardDetail.do?idx="+obj.idx+"'>"+obj.title+"</a></td>");
+        		  $('#no'+index).append("<td>"+obj.id+"</td>");
+        		  $('#no'+index).append("<td>"+obj.writedate+"</td>");
+        	  });
+          }
+          });
        
        $.ajax({
           url:"RecentReview.do",
