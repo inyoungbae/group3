@@ -860,12 +860,15 @@ function message() {
 
 function search() {
 	event.preventDefault();
+	
+	 myTotal();
+	
 	var searchword = $('#searchword').val();
 	console.log(searchword);
 	var pagesize = $('#pagesize :selected').val();
 	var currentpage = 1;
 	var tbc = $('#tbc').text();
-	
+	console.log("서치 함수내에 tbc 값은?" + tbc);
 	
 	if(searchword != null){
 		
