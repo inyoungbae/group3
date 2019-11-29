@@ -27,6 +27,16 @@
 	  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <script type="text/javascript">
+    function writeOk() {
+    	   if('${sessionScope.id}'==''){
+    	         alert('로그인이 필요합니다');
+    	         return false;
+    	      }
+    	}
+    
+    </script>
 	<script type="text/javascript">
 $(function(){
 	var q = ['seoul','incheon','daejeon','daegu','gwangju','ulsan','busan'];
@@ -382,7 +392,7 @@ $(function(){
                   var page = '<div class="col-sm"><div class="single-features-area" ><img src="upload/'+object.savename+'" onerror="this.src='+'\'./img/bg-img/noimage.gif\''+'"style ="width:100%; height:300px;">'
                       // +'<div class="price-start"><p id ="pp"> ID :&nbsp;&nbsp;'+object.id+'</p></div>'
                        +'<div class="feature-content d-flex align-items-center justify-content-between">'
-                       +'<div class="feature-title"><a href="ShowReviewDetail.do?idx='+object.idx+'"><h5>'+object.id+'님의 캠핑장 후기</h5></a>'
+                       +'<div class="feature-title"><a href="ShowReviewDetail.do?idx='+object.idx+'" onclick="return writeOk()"><h5>'+object.id+'님의 캠핑장 후기</h5></a>'
                        +'<p>'+object.writedate+'</p></div><div class="feature-favourite"><a href="#">'
                        +'<i class="fa fa-heart-o" aria-hidden="true"></i></a></div></div></div></div>';
                       console.log(page);

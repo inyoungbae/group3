@@ -42,7 +42,7 @@ public class ReviewEditOkService implements Action{
 				
 				
 				String idx = multi.getParameter("idx");
-	            String fidx = multi.getParameter("fidx");
+	            int fidx = Integer.parseInt(multi.getParameter("fidx"));
 	            String id = multi.getParameter("id");
 	            String bcode = multi.getParameter("bcode");
 	            String tcode = multi.getParameter("tcode");
@@ -51,7 +51,7 @@ public class ReviewEditOkService implements Action{
 	            int cp = Integer.parseInt(multi.getParameter("cp"));
 	            int ps = Integer.parseInt(multi.getParameter("ps"));
 	            
-	            System.out.println("수정ok 서비스입니다." + idx + fidx + id + bcode + tcode + title + content);
+	            System.out.println("수정ok 서비스입니다." + idx + "/fidx:"+ fidx + id + bcode + tcode + title + content);
 	            Enumeration filename = multi.getFileNames();
 
 	            
@@ -70,6 +70,7 @@ public class ReviewEditOkService implements Action{
 	            board.setContent(content);
 
 	            File file = new File();
+	            file.setFidx(fidx);
 	            file.setOriname(orifilename);
 	            file.setSavename(sfilename);
 
