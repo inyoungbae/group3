@@ -1240,8 +1240,3 @@ $(function(){
 <jsp:include page="/common/bottom.jsp"></jsp:include>
 
 </html>
-
-
-
-
-

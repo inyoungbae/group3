@@ -75,7 +75,9 @@ $(function(){
    //console.log(temp +"/" + temp2)
    
    if('${detail.id}' != '${sessionScope.id}') {
-      
+	   if('${sessionScope.grade}'==2){
+			return;
+		}
       $('#editbtn').remove();
       $('#deletebtn').remove();
       

@@ -125,7 +125,7 @@ $(function(){
     {    
         return true;
     }else {
-        alert('입력되지 않은 빈칸이있습니다. 확인해주세요.');
+        alert('형식에 맞지 않습니다. 확인해주세요.');
         return false;
     }
 }); 
@@ -341,7 +341,7 @@ $(function(){
   		<th><input type="text" class="form-control" id="myhp" name="myhp"><p class=ckhp></p></th>
   	</tr>
   	<tr style="margin:2%">
-  		<th></th>
+  		<th><input type="button" class="form-control" id="mydelete" value="회원탈퇴하기" style="cursor: pointer"></th>
   		<th><input type="submit" class="form-control" id="edit" value="수정완료" style="cursor: pointer"></th>
   	</tr>
   </table>
@@ -351,6 +351,14 @@ $(function(){
 </div>
 
 <script>
+$('#mydelete').click(function(){
+	var r = confirm("정말로 삭제하시겠습니까?");
+	  if (r == true) {
+	    location.replace("MemberDelete.do?id="+'${sessionScope.id}');
+	    location.replace("GoMain.do");
+	    location.replace("LogOut.do");
+	  }
+});
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
   

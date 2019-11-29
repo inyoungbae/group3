@@ -1,3 +1,4 @@
+
 package kr.or.bit.dao;
 
 import java.sql.Connection;
@@ -946,6 +947,7 @@ public class BoardDao {
 	      System.out.println("여기는?"+boardlist);
 	      return boardlist;
 	   }
+   
    public List<File> ReivewFilelist(int cpage , int pagesize, int bcode, String searchword){   //페이징처리 함수   (인영)
        System.out.println("현재페이지" + cpage + "페이지사이즈" + pagesize);
        Connection conn = null;
@@ -959,7 +961,6 @@ public class BoardDao {
           String sql = "select * from (select rownum rn, a.idx, a.id, a.bcode, a.tcode, a.title, a.content, a.writedate, a.readnum, a.fidx, a.savename, a.cocode from (select e.idx as idx, e.id as id, e.bcode as bcode, e.tcode as tcode, e.title as title, e.content as content, e.readnum as readnum, e.writedate as writedate, f.fidx as fidx, f.oriname as oriname, f.savename as savename, f.fsize as fsize, f.cocode as cocode from fileupload f join board e on f.idx = e.idx where e.bcode=? and f.cocode=0 and (e.title like '%"+searchword+"%') order by e.ref desc) a where rownum <= ?) where rn >= ?";
           pstmt = conn.prepareStatement(sql);
           
-          System.out.println(sql);
           //공식같은 로직
           int start = cpage * pagesize - (pagesize -1); //1 * 5 - (5 - 1) >> 1
           int end = cpage * pagesize; // 1 * 5 >> 5
@@ -982,9 +983,10 @@ public class BoardDao {
                 file.setSavename(rs.getString("savename"));
                 file.setCocode(rs.getInt("cocode"));
                 file.setTcode(rs.getInt("tcode"));
+                file.setBcode(rs.getInt("bcode"));
              
              list.add(file);
-             System.out.println("list 나오니?" + list);
+             System.out.println("여기는 리뷰리스트 list 나오니?" + list);
           }
        }catch (Exception e) {
           System.out.println("오류 :" + e.getMessage());
@@ -998,6 +1000,7 @@ public class BoardDao {
        }
        return list;
     }
+   
    public int boardInsert(Board board, File file) {   //글쓰기Dao
 		PreparedStatement pstmt =null;
 		Connection conn = null;
@@ -1039,6 +1042,8 @@ public class BoardDao {
 		}
 		return resultrow;
 	}
+   
+   
 	//서치기능을 위한 리스트 함수
 	public ArrayList<Board> list(int cpage , int pagesize, int bcode, String searchword){
 		
@@ -1246,4 +1251,6 @@ public class BoardDao {
 			
 		return list;
 	}
+
 }
+
