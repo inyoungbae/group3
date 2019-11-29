@@ -116,7 +116,7 @@
                                			$('#content'+index).append("<br>캠핑장명 : <b>"+obj.title+"<b><br>");
                                			$('#content'+index).append("주소 : "+obj.addr1+"<br>");
                                			if(obj.tel==null){
-                               				$('#content'+index).append("전화번호 : <br>");
+                               				$('#content'+index).append("전화번호 : -<br>");
                                			}else{
                                				$('#content'+index).append("전화번호 : "+obj.tel+"<br>");
                                			}
@@ -321,7 +321,7 @@ $('#namebutton').click(function(){
         			    $('#content'+index).append("<br>캠핑장명 : <b>"+obj.title+"<b><br>");
                			$('#content'+index).append("주소 : "+obj.addr1+"<br>");
                			if(obj.tel==null){
-               				$('#content'+index).append("전화번호 : <br>");
+               				$('#content'+index).append("전화번호 : -<br>");
                			}else{
                				$('#content'+index).append("전화번호 : "+obj.tel+"<br>");
                			}
@@ -446,7 +446,7 @@ $('#namebutton').click(function(){
         			    $('#content'+index).append("<br>캠핑장명 : <b>"+obj.title+"<b><br>");
                			$('#content'+index).append("주소 : "+obj.addr1+"<br>");
                			if(obj.tel==null){
-               				$('#content'+index).append("전화번호 : <br>");
+               				$('#content'+index).append("전화번호 : -<br>");
                			}else{
                				$('#content'+index).append("전화번호 : "+obj.tel+"<br>");
                			}

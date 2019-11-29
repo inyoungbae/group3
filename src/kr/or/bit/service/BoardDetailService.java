@@ -18,6 +18,7 @@ public class BoardDetailService implements Action {
 		
 		try {
 			      int idx = Integer.parseInt((String) request.getParameter("idx"));	
+			      System.out.println("hihi"+idx);
 			      int edit = Integer.parseInt((String) request.getParameter("edit"));
 			      int bcode = Integer.parseInt((String) request.getParameter("bcode"));
 			      System.out.println("bcode 여기까지 올까??" + bcode);
@@ -38,6 +39,7 @@ public class BoardDetailService implements Action {
   		  		  boarddetail.setPs(ps);
   		  		  boarddetail.setZcode(zcode);
   		  		  
+  		  		  request.setAttribute("bcode",bcode);
   		  		  request.setAttribute("boarddetail",boarddetail);
 		  		  
   		  		  forward = new ActionForward();
