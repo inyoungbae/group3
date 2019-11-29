@@ -482,9 +482,7 @@ ul {
 	margin: 0px;
 }
 
-#writeButton {
-display : none;
-}
+
 
 
 </style>
@@ -864,7 +862,7 @@ function search() {
 	
 	if(searchword != null){
 		
-		var page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 401, "zcode" : 1, "sw" : searchword}
+		var page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 303, "zcode" : 1, "sw" : searchword}
 	
 		$.ajax(
 				{
@@ -946,8 +944,11 @@ function writeOk() {
 
 
 $(function(){
+	console.log("세션에 저장된 회원등급보기" +${sessionScope.grade});
 	if(${sessionScope.grade} == 2) {
-		$('#writeButton').attr("display", "block");
+		$('#writeButton').show();
+	}else{
+		$('#writeButton').hide();
 	}
 });
 
@@ -1041,9 +1042,9 @@ $(function(){
 							<!-- /.modal -->
 						</div>
 						<ul class="inbox-nav inbox-divider">
-							<li class="active"><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
+							<li><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
 									Q&A <span class="label label-danger pull-right">2</span></a></li>
-							<li><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
+							<li class="active"><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
 							</li>
 						</ul>
 
