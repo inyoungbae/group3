@@ -37,6 +37,7 @@ import kr.or.bit.service.memberEditService;
 import kr.or.bit.service.memberListService;
 import kr.or.bit.service.nameService;
 import kr.or.bit.service.ReviewListService;
+import kr.or.bit.service.ReviewSearchService;
 import kr.or.bit.service.ReviewWriteService;
 import kr.or.bit.service.MyPageReviewService;
 import kr.or.bit.service.MyTradePageService;
@@ -582,7 +583,19 @@ public class FrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			System.out.println("글쓰러 갈라고 컨트롤러 들림 서비스 갔다왔어요. 지금은 CONTROLLER ");
+		}else if(url_Command.equals("/ReviewSearch.do")) { // 후기게시판 제목으로 검색  - 인영
+	    	System.out.println("여기는 서치 컨트롤러");
+	           action = new ReviewSearchService();
+	           try {
+				forward = action.execute(request, response);
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+		
+		
 
 		if (forward != null) {
 

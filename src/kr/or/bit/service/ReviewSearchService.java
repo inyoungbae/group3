@@ -27,13 +27,13 @@ public class ReviewSearchService implements Action{
          String ps = request.getParameter("ps");
 
          
-System.out.println("bcode" + bcode +"/searchword" + searchword + "/cp" + cp +"/ps" + ps);
+         System.out.println("bcode" + bcode +"/searchword" + searchword + "/cp" + cp +"/ps" + ps);
 
          
          BoardDao dao = new BoardDao();
          
          int totalcount = dao.totalBoardCount(bcode);
-         
+         System.out.println(totalcount);
          if(ps == null || ps.trim().equals("")){
             //default 값 설정
             ps = "5";
@@ -60,14 +60,15 @@ System.out.println("bcode" + bcode +"/searchword" + searchword + "/cp" + cp +"/p
          System.out.println("리스트나오니?" + reviewlist);
          JSONArray jsonlist = JSONArray.fromObject(reviewlist);
          System.out.println("제이슨리스트" + jsonlist);
+         
          request.setAttribute("data", jsonlist);
          request.setAttribute("cp", cpage);
          request.setAttribute("ps", pagesize);
          request.setAttribute("totalcount", totalcount);
-           request.setAttribute("pagecount", pagecount);
+          request.setAttribute("pagecount", pagecount);
 
            forward = new ActionForward();
-           forward.setPath("/Campingdetail_json.jsp");
+           forward.setPath("/WEB-INF/views/Campingdetail_json.jsp");
              
       } catch (Exception e) {
          
