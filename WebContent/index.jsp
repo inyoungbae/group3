@@ -90,8 +90,10 @@ $(function(){
 
         table.draw(data, {showRowNumber: true, width: '500px', height: '600px',sortAscending:false, sortColumn:1});
         $('th').eq(0).html("순위");
+        $('th').attr('style','height:50px');
         $('td').attr('style', 'text-align:center');
         $('th').attr('class', '');
+        //$('table').attr('class','table');
         for(var i=11; i<=60;i++){
            $('tr').eq(i).hide();
         }
@@ -140,11 +142,6 @@ h2 {
 </style>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="dorne-load"></div>
-    </div>
-
     <!-- ***** Search Form Area ***** -->
     <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
@@ -371,7 +368,8 @@ h2 {
           data: {"bcode" : 303,
         		"ps" : 5,
         		"cp" : 1,
-        		"zcode" : 1
+        		"zcode" : 1,
+        		"edit" : 0
           },
           type:"get",
           success: function(data){
@@ -379,7 +377,7 @@ h2 {
         	  $.each(data, function(index, obj){
         		  console.log(obj);
         		  $('#notice').append("<tr id='no"+index+"'></tr>");
-        		  $('#no'+index).append("<td><a href='boardDetail.do?idx="+obj.idx+"'>"+obj.title+"</a></td>");
+        		  $('#no'+index).append("<td><a href='boardDetail.do?idx="+obj.idx+"&bcode=303&ps=5&cp=1&zcode=1&edit=0'>"+obj.title+"</a></td>");
         		  $('#no'+index).append("<td>"+obj.id+"</td>");
         		  $('#no'+index).append("<td>"+obj.writedate+"</td>");
         	  });

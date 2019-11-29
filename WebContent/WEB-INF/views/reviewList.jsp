@@ -65,7 +65,6 @@
 
 #titlehover:visited {
  background-color: #E6E6E6;
-
  color : red;
 }
 
@@ -87,13 +86,10 @@ function writeOk() {
 <jsp:include page="/common/top.jsp"></jsp:include>
 <body>
 
-
    <c:set var="totalcount" value="${requestScope.totalcount}"></c:set>
    <c:set var="cp" value="${requestScope.cp}"></c:set>
    <c:set var="ps" value="${requestScope.ps}"></c:set>
    <c:set var="pagecount" value="${requestScope.pagecount}"></c:set>
-
-
 
    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/hero.jpg)">
       <!-- Start post Area -->
@@ -114,8 +110,6 @@ function writeOk() {
                   style="width: 200px; " onclick="return writeOk()">
                   <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;WRITE
                </button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
                <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:15%; height:52px;">
                     <button type="submit" id="searchbtn" name="searchbtn" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
@@ -126,7 +120,7 @@ function writeOk() {
 
             <div class="container" style="margin-bottom: 5%">
                <div class="row">
-                  <div class="col-sm ">PageSize설정:</div>
+                  <div class="col-sm ">PageSize설정 : </div>
                   <div class="col-sm">
                   <form name="list">
                   <input type="hidden" name="cp" value="1">
@@ -149,7 +143,7 @@ function writeOk() {
                </div>
             </div>
             
-            <br>
+            
             <div class="container">
                <div class="row">
                   <div class="col-sm ">
@@ -191,7 +185,7 @@ function writeOk() {
 
                      <div class="single-post d-flex flex-row">
                         <div class="thumb" style="margin-right:5%">
-                           <img src="upload/${list.savename}" alt="후기사진입니다." style="width: 250px" onerror="this.src='./img/bg-img/noimage.gif'">
+                           <img src="upload/${list.savename}"  style="width: 250px" onerror="this.src='./img/bg-img/noimage.gif'">
                         </div>
                         <div class="details" style="margin-top: 1%">
                            <div class="title d-flex flex-row justify-content-between">
@@ -220,9 +214,7 @@ function writeOk() {
 
                         </div>
                      </div>
-
                   </div>
-
                </div>
             </c:forEach>
 </div>
