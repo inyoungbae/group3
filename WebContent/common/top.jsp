@@ -46,9 +46,6 @@
  	   								<li class="nav-item">
  	   								<a class="nav-link" href="GetMemberList.do" style="font-size: 20px">Memberlist</a>
  	   								</li>
- 	   								<li class="nav-item">
- 	   								<a class="nav-link" href="BoardList.do" style="font-size: 20px">Boardlist</a>
- 	   								</li>
 	                                </c:when>  
 	                                 <c:when test="${id!=null && grade == '1'}">
 	                                 <li class="nav-item">
