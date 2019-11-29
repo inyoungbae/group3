@@ -259,6 +259,7 @@ function writeOk() {
                   $('#reviewbox').empty();
                    $.each(data, function(index, object) {
                       console.log(object);
+                      console.log(object.idx);
                       
                        control =
                              '<div class="container"><div class="row justify-content-center d-flex"></div><div class="col-lg-12 post-list" id="reviewdiv">'
@@ -268,7 +269,7 @@ function writeOk() {
                              + '</div><div class="details" style="margin-top: 1%">'
                              + '<div class="title d-flex flex-row justify-content-between">'
                              + '<div class="titles" id="titlehover" style="font-size: 13px;">'
-                             + '<a href="ShowReviewDetail.do?idx=${list.idx}&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
+                             + '<a href="ShowReviewDetail.do?idx='+object.idx+'&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
                              + '<h4>&nbsp;&nbsp;'+object.title+'</h4></a></div></div>'
                              + '<p style="text-align: left; font-size: 13px;">'
                              + '<p class="address" style="text-align: left">'
