@@ -50,10 +50,10 @@
 }
 
 body {
-  color: #777777;
+  color: #906D3B;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: bold;
   line-height: 1.625em;
   position: relative;
 }
@@ -782,7 +782,8 @@ td, th {
 }
 
 b, sup, sub, u, del {
-  color: #49e4fa;
+  color: #125448;
+  font-weight:bold;
 }
 
 h1 {
@@ -2580,7 +2581,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .post-list .cat-list li:hover {
-  background-color: #49e4fa;
+  background-color: #125448;
 }
 
 .post-list .cat-list li:hover a {
@@ -2599,7 +2600,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .post-list .single-post {
   padding: 30px;
-  background-color: #f9f9ff;
+  background-color: #eaedea;
   margin-bottom: 30px;
 }
 
@@ -2684,7 +2685,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .post-list .single-post .thumb .tags li:hover {
-  background-color: #49e4fa;
+  background-color:  #125448;
 }
 
 .post-list .single-post .thumb .tags li:hover a {
@@ -2716,7 +2717,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .post-list .loadmore-btn {
   text-align: center;
-  background-color: #49e4fa;
+  background-color:  #125448;
   color: #fff;
   padding: 8px 15px;
   margin-top: 60px;
@@ -2756,7 +2757,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  background: #49e4fa;
+  background:  #125448;
 }
 
 .sidebar .single-slidebar {
@@ -2816,7 +2817,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .sidebar .single-rated .btns {
-  background-color: #49e4fa;
+  background-color:  #125448;
   color: #fff;
   border: 1px solid transparent;
   display: inline-block;
@@ -2830,8 +2831,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .sidebar .single-rated .btns:hover {
   background-color: transparent;
-  border-color: #49e4fa;
-  color: #49e4fa;
+  border-color:  #125448;
+  color:  #125448;
 }
 
 .sidebar .single-blog {
