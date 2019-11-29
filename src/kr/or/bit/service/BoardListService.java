@@ -32,7 +32,6 @@ public class BoardListService implements Action {
 			      System.out.println("page Size 여기까지 올까??" + ps);
 			      int zcode = Integer.parseInt((String) request.getParameter("zcode"));
 			      System.out.println("zcode 여기까지 올까??" + zcode);
-			      
 			     
   		  		  BoardDao dao = new BoardDao();
   		  		ArrayList<Board> boardlist = new ArrayList<Board>();

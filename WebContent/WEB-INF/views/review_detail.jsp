@@ -54,7 +54,7 @@
 
 <!-- jquery 추가함 iy -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+ 
 
 </head>
 
@@ -97,7 +97,9 @@ $(function(){
 	//var temp2 = "ReviewDelete.do?bcode=202&tcode=0&cp=${requestScope.cp}&ps=${requestScope.ps}&idx=${requestScope.idx}";
 	//console.log(temp +"/" + temp2)
 	if('${detail.id}' != '${sessionScope.id}') {
-		
+		if('${sessionScope.grade}'==2){
+			return;
+		}
 		$('#editbtn').remove();
 		$('#deletebtn').remove();
 
@@ -229,21 +231,17 @@ $(function(){
 																				//console.log(object.replyid);
 																				//console.log(object.replycontent);
 																				let control = '<div class="single-comment justify-content-between d-flex" name='+object.replyid+' style="margin:2px"><div class="user justify-content-between d-flex">'
-																							+ '<div class="thumb"><img src="img/blog/c1.jpg" alt=""></div><div class="desc">'
+																							+ '<div class="thumb"><img src="img/bg-img/camping.JPG" alt=""></div><div class="desc">'
 																							+ '<span><strong>'+object.replyid+'</strong></span>&nbsp;&nbsp;&nbsp;<span class="date">'+object.replydate+'</span>'
 																							+ '<p class="comment">'+object.replycontent+'</p></div>'
 																							+ '</div>'
 																							
-																					//console.log($('#replyuser').text());
-																					//console.log('${sessionScope.id}');
+																		
 																				if(object.replyid == '${sessionScope.id}') {
 																					control += '<input type="button" class="btn" id='+object.replyidx+' value="Delete" style="margin:2px">'
 																				}
 																				control += '</div>';
 																				
-																				
-																				
-																				//console.log(control);
 																	
 																				$('#replylist').append(control);
 

@@ -1,6 +1,5 @@
 package kr.or.bit.service;
 
-import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.naming.NamingException;

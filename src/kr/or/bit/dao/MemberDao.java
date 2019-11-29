@@ -228,7 +228,7 @@ public class MemberDao {
 		
 		try {
 			conn = ds.getConnection();
-			
+			System.out.println("여긴오냐");
 			String sql = "select id, grade from member where id=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -237,6 +237,7 @@ public class MemberDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) { //맞는 데이터가 있으면
 				int grade = (rs.getInt("grade"));
+				System.out.println("몇이냐 넌 "+grade);
 				if(grade==1) {
 					isLogin = 1;
 				}else if(grade==2) {
@@ -248,6 +249,7 @@ public class MemberDao {
 			}
 			
 			} catch (Exception e) {
+				System.out.println("오류의 사유는 "+e.getMessage());
 				e.printStackTrace();
 			}finally{
 				try {

@@ -118,7 +118,7 @@ function writeOk() {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
                <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:15%; height:52px;">
-                    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                    <button type="submit" id="searchbtn" name="searchbtn" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
 
 <br>
 <br>
@@ -246,32 +246,30 @@ function writeOk() {
                  $('#campgnm').focus();
               }else{
                 console.log("여보세요? " + $('#campgnm').val());
-                console.log("여기오니33?");
 
                  var control ="";
              $.ajax({
                 url : "ReviewSearch.do",
                 dataType:"JSON",
-               data: paramdata,
-               type:"get",
-               success: function(data){
-                  console.log(data);
-                 //console.log(data.idx);
+                data: paramdata,
+                type:"get",
+                success: function(data){
+            	   console.log("여기는 서치 비동기!");
+                   console.log(data);
                   $('#reviewbox').empty();
                    $.each(data, function(index, object) {
                       console.log(object);
-                      //console.log(object.title);
+                      console.log(object.idx);
                       
                        control =
-                          '<div class="container"><div class="row justify-content-center d-flex"></div><div class="col-lg-12 post-list" id="reviewdiv">'
-                          //
-                        +'<div class="single-post d-flex flex-row">'
+                             '<div class="container"><div class="row justify-content-center d-flex"></div><div class="col-lg-12 post-list" id="reviewdiv">'
+                             +'<div class="single-post d-flex flex-row">'
                              + '<div class="thumb" style="margin-right:5%; ">'
                              + '<img style="width: 250px" src="upload/'+object.savename+'" onerror="this.src='+'\'./img/bg-img/noimage.gif\''+'">'
                              + '</div><div class="details" style="margin-top: 1%">'
                              + '<div class="title d-flex flex-row justify-content-between">'
                              + '<div class="titles" id="titlehover" style="font-size: 13px;">'
-                             + '<a href="ShowReviewDetail.do?idx=${list.idx}&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
+                             + '<a href="ShowReviewDetail.do?idx='+object.idx+'&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
                              + '<h4>&nbsp;&nbsp;'+object.title+'</h4></a></div></div>'
                              + '<p style="text-align: left; font-size: 13px;">'
                              + '<p class="address" style="text-align: left">'
@@ -284,11 +282,13 @@ function writeOk() {
                                   + object.readnum
                                   + '</p></div></div></div></div>';
                                   
-                                  //console.log(control);
+
                                   
                                   $('#reviewbox').append(control);
                                   
                    })
+               }, error:function(xhr){
+                   alert("서치 비동기실패" + xhr.status + " / " + xhr.statusText);
                }
              })
             }

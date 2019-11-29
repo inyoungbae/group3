@@ -1243,8 +1243,3 @@ function writeOk() {
 <jsp:include page="/common/bottom.jsp"></jsp:include>
 
 </html>
-
-
-
-
-

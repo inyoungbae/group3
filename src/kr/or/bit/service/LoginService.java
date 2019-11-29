@@ -19,7 +19,7 @@ public class LoginService implements Action{
       String pwd = request.getParameter("pwd");
             
       //2. 데이터 확인
-      //System.out.println(userid + " / " + pwd);
+      System.out.println(id + " / " + pwd);
       
       //3. 처리
       MemberDao memberdao = new MemberDao();
@@ -32,7 +32,9 @@ public class LoginService implements Action{
          //세션 가져와서 login 정보 저장
          HttpSession session = request.getSession();
          session.setAttribute("id",id);
+         System.out.println("아이디는 ? "+id);
          session.setAttribute("grade", isLogin);
+         System.out.println("등급은 ? "+isLogin);
          board_msg = "로그인 성공";
          board_url = request.getContextPath()+"/GoMain.do";
       }else if(isLogin==2) {
