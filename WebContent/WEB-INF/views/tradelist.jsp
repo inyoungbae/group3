@@ -96,6 +96,12 @@ $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바�
    }
 
 %> --%>
+function writeOk() {
+	   if('${sessionScope.id}'==''){
+	         alert('로그인이 필요합니다');
+	         return false;
+	      }
+	}
 </script>
 <body>
 
@@ -122,13 +128,13 @@ $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바�
          <div style="text-align: center;">
             <a href="TradeWriteView.do?bcode=102&tcode=1" class="btn mini blue">
                <button type="submit" id="reviewbtn" class="btn dorne-btn"
-                  style="width: 200px;" onclick="check()">
+                  style="width: 200px;" onclick="return writeOk()">
                   <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;WRITE
                </button>
 
             </a>
                <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:30%; height:52px;">
-    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#6b8e23;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
 
 
      <!--        <div class="single-widget search-widget">
