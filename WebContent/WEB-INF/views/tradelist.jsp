@@ -96,6 +96,12 @@ $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바�
    }
 
 %> --%>
+function writeOk() {
+	   if('${sessionScope.id}'==''){
+	         alert('로그인이 필요합니다');
+	         return false;
+	      }
+	}
 </script>
 <body>
 
@@ -122,7 +128,7 @@ $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바�
          <div style="text-align: center;">
             <a href="TradeWriteView.do?bcode=102&tcode=1" class="btn mini blue">
                <button type="submit" id="reviewbtn" class="btn dorne-btn"
-                  style="width: 200px;" onclick="check()">
+                  style="width: 200px;" onclick="return writeOk()">
                   <i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;WRITE
                </button>
 
