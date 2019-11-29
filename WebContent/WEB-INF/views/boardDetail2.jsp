@@ -56,14 +56,7 @@ $(function(){
 		
 		
 		
-		
-		
-		if(tableCode == 102) {
-			$('#file1').css("display", "block");
-			$('#tcode').val(0);
-		}else if(tableCode == 201) {
-			$('#tcode').val(1);
-		}
+	
 		
 		
 	});   
@@ -94,7 +87,7 @@ $(function(){
 
 
 $(function(){
-	var tablecode = ${requestScope.bcode};
+	var tablecode = $('#myBcode').val();
 	console.log(tablecode);
 	if(tablecode == 401){
 		$('#boardtitle').text("Q & A");
@@ -103,8 +96,18 @@ $(function(){
 	}
 	
 	if(${sessionScope.grade}  == 2){
-		$('#replyButton').attr("display", "block");
-	}
+		
+		
+		console.log("세션에 저장된 회원등급보기" +${sessionScope.grade});
+		
+			$('#replyButton').show();
+		}else{
+			$('#replyButton').hide();
+		}
+		
+		
+		
+	
 	
 });
 
@@ -145,9 +148,7 @@ article {
    width: 80%;
 }
 
-#replyButton {
-display : none;
-}
+
 
 </style>
 <body>
@@ -164,7 +165,7 @@ display : none;
          <div class="animatedParent" id="myString">
             <div class="section-heading text-center animated fadeInDown">
                <h2 class="h-bold">
-                  <i class="fas fa-edit"></i>&nbsp;&nbsp;<b id="boardtitle"></b>&nbsp;&nbsp; Write
+                  <b id="boardtitle"></b>&nbsp;&nbsp; 상세보기
                </h2>
             </div>
          </div>
@@ -225,7 +226,7 @@ display : none;
                         <td colspan="2" align="center">
                         <form id="reply" action="gotoWrite.do" method="get" target="_blank">
                         <input type="hidden" name='idx' value='${board.idx }' />
-                        <input type="hidden" name="bcode" value='${board.bcode}'>
+                        <input type="hidden" id = "myBcode" name="bcode" value='${board.bcode}'>
                         <input type="hidden" name="tcode" value='${board.tcode}'>
                         <input type="hidden" name="cp" value='${board.cp}'>
                         <input type="hidden" name="ps" value='${board.ps}'>
