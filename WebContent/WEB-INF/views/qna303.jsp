@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -580,7 +581,7 @@ function showlist() {
                         
                         mytable += "</td>";
                         mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                         mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                         if(obj.cocode ==1){
                         	mytable += "<td class='view-message  text-right'></td>";
@@ -690,7 +691,7 @@ function downpage() {
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
 	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
 	                        if(obj.cocode ==1){
 	                        	mytable += "<td class='view-message  text-right'></td>";
@@ -800,7 +801,7 @@ function uppage() {
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
 	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
 	                        if(obj.cocode ==1){
 	                        	mytable += "<td class='view-message  text-right'></td>";
@@ -898,7 +899,7 @@ function search() {
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
 	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
 	                        if(obj.cocode ==1){
 	                        	mytable += "<td class='view-message  text-right'></td>";
@@ -1118,7 +1119,8 @@ $(function(){
 
 											<td class="view-message  inbox-small-cells"><i
 												class="fa fa-paperclip"></i></td>
-											<td class="view-message">${blist.writedate}</td>
+												<c:set var="writedate" value="${blist.writedate}" />
+											<td class="view-message">${fn:substring(writedate, 0, 10)}</td>
 											<td class="view-message  text-right">${blist.readnum}</td>
 
 											<c:choose>
