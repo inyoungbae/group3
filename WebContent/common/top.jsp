@@ -42,7 +42,7 @@
                         </div>
 
                                      <div class="collapse navbar-collapse" id="dorneNav">
-                                     <ul class="navbar-nav mr-auto" id="dorneMenu" style = "margin-left: 300px;">
+                                     <ul class="navbar-nav mr-auto" id="dorneMenu" style = "margin-left: 50%;">
 	                                <c:choose>
  	   								<c:when test="${id!=null && grade == '2'}">
  	   								<li class="nav-item">
