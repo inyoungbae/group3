@@ -120,7 +120,6 @@ $(function(){
 										<button type="button" class="btn" value="List" style="margin: 2px" onclick="location.href='ReviewList.do?bcode=202&tcode=0&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 											<i class="fas fa-undo-alt"></i>&nbsp;&nbsp;List
 										</button>
-										<div id="btns"></div>
 									
 								
 										<button type="button" id="editbtn" class="btn" value="Edit" style="margin: 2px" onclick="location.href='ReviewEdit.do?bcode=202&tcode=0&cp=${requestScope.cp}&ps=${requestScope.ps}&idx=${requestScope.idx}&fidx=${detail.fidx}'">
@@ -231,7 +230,7 @@ $(function(){
 																				//console.log(object.replyid);
 																				//console.log(object.replycontent);
 																				let control = '<div class="single-comment justify-content-between d-flex" name='+object.replyid+' style="margin:2px"><div class="user justify-content-between d-flex">'
-																							+ '<div class="thumb"><img src="img/blog/c1.jpg" alt=""></div><div class="desc">'
+																							+ '<div class="thumb"><img src="img/avatar.png" alt="" width="50px" height="50px"></div><div class="desc">'
 																							+ '<span><strong>'+object.replyid+'</strong></span>&nbsp;&nbsp;&nbsp;<span class="date">'+object.replydate+'</span>'
 																							+ '<p class="comment">'+object.replycontent+'</p></div>'
 																							+ '</div>'
