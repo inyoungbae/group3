@@ -947,8 +947,10 @@ $(function(){
 	console.log("세션에 저장된 회원등급보기" +${sessionScope.grade});
 	if(${sessionScope.grade} == 2) {
 		$('#writeButton').show();
+		$('#editHd').show();
 	}else{
 		$('#writeButton').hide();
+		$('#editHd').hide();
 	}
 });
 
@@ -1164,8 +1166,8 @@ $(function(){
 										<th class="view-message">작성일
 										</td>
 										<th class="view-message">조회수</th>
-										<th class="view-message  text-right">수정</th>
-										<th class="view-message  text-right">삭제</th>
+										<th id="editHd1" class="view-message  text-right">수정</th>
+										<th id="editHd1" class="view-message  text-right">삭제</th>
 
 									</tr>
 
@@ -1210,10 +1212,10 @@ $(function(){
 													</c:when>
 													<c:otherwise>
 														<td class="view-message  text-right"><a
-															href="boardDetail.do?bcode=401&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+															href="boardDetail.do?bcode=${blist.bcode }&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
 															class="btn mini blue">수정</a></td>
 														<td class="view-message  text-right"><a
-															href="boardDelete.do?bcode=401&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+															href="boardDelete.do?bcode=${blist.bcode }&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
 															class="btn mini blue" onclick="return confirm(message())">삭제</a>
 														</td>
 													</c:otherwise>
