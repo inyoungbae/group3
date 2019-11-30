@@ -303,22 +303,36 @@ public class BoardDao {
  
    
    
-   public int editFile(File file, int fidx) {   //파일글 수정 수연
+   public int editFile(File file, int fidx, int a) {   //파일글 수정 수연
        PreparedStatement pstmt = null;
        Connection conn = null;
        String sql = "update fileupload set fidx=?, oriname=?, savename=?, fsize=?, cocode=?  where fidx=?";   
+       String sql2 = "update fileupload set fidx=?, oriname=?, fsize=?, cocode=?  where fidx=?";   
        int resultrow = 0;
        
        try {
-          conn = ds.getConnection();
-          pstmt = conn.prepareStatement(sql);
-          pstmt.setInt(1, fidx);
-          pstmt.setString(2, file.getOriname());
-          pstmt.setString(3, file.getSavename());
-          pstmt.setInt(4, file.getFsize());
-          pstmt.setInt(5, file.getCocode());
-          pstmt.setInt(6, file.getFidx());
-          resultrow = pstmt.executeUpdate();
+    	   if(a==0) {
+    		   conn = ds.getConnection();
+    	          pstmt = conn.prepareStatement(sql);
+    	          pstmt.setInt(1, fidx);
+    	          pstmt.setString(2, file.getOriname());
+    	          pstmt.setString(3, file.getSavename());
+    	          pstmt.setInt(4, file.getFsize());
+    	          pstmt.setInt(5, file.getCocode());
+    	          pstmt.setInt(6, file.getFidx());
+    	          resultrow = pstmt.executeUpdate(); 
+    	   }else if(a==1) {
+    		   conn = ds.getConnection();
+    	          pstmt = conn.prepareStatement(sql2);
+    	          pstmt.setInt(1, fidx);
+    	          pstmt.setString(2, file.getOriname());
+    	          pstmt.setString(3, file.getSavename());
+    	          pstmt.setInt(4, file.getFsize());
+    	          pstmt.setInt(5, file.getCocode());
+    	          pstmt.setInt(6, file.getFidx());
+    	          resultrow = pstmt.executeUpdate();
+    	   }
+          
           
        }catch(Exception e) {
           e.printStackTrace();
