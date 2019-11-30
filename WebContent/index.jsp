@@ -185,7 +185,7 @@ h2 {
                                 <h6 style ="color:#333333;">캠핑장을 검색해서 찾아보세요</h6>
                                 <form action="MainCampingview.do">
                                     <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:70%; height:52px; border:0;">
-                                    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true" style = "color:white;">Search</i></button>
                                 </form>
                                 <br>
                                 <form action="MainCampingview.do">
@@ -197,7 +197,7 @@ h2 {
                                         <option value="강동구">강동구</option>
                                         <option value="마포구">마포구</option>
                                     </select>
-                                    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true" style = "color:white;"> Search</i></button>
                                 </form>
                             </div>
                         </div>

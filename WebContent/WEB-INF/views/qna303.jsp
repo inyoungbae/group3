@@ -69,7 +69,7 @@
 }
 
 .mail-box .sm-side .user-head {
-	background: none repeat scroll 0 0 #00a8b3;
+	background: none repeat scroll 0 0 #125448;
 	border-radius: 4px 0 0;
 	color: #fff;
 	min-height: 80px;
@@ -208,9 +208,9 @@ ul.labels-info li a i {
 }
 
 .inbox-head {
-	background: none repeat scroll 0 0 #41cac0;
+	background: none repeat scroll 0 0 #125448;
 	border-radius: 0 4px 0 0;
-	color: #341a79;
+	color: #fff;
 	min-height: 80px;
 	padding: 20px;
 }
@@ -233,7 +233,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head .sr-btn {
-	background: none repeat scroll 0 0 #00a6b2;
+	background: none repeat scroll 0 0 #eaedea;
 	border: medium none;
 	border-radius: 0 4px 4px 0;
 	color: #fff;
@@ -481,10 +481,6 @@ ul {
 	padding: 0px;
 	margin: 0px;
 }
-
-
-
-
 </style>
 <script type="text/javascript">
 
@@ -579,7 +575,7 @@ function showlist() {
                         if(obj.cocode == 1) {
                         	mytable += "<b>**삭제된 글입니다**</b>"
                         }else{
-                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'  onclick='return writeOk()'>"+ obj.title + "</a>";
+                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0'>"+ obj.title + "</a>";
                         }
                         
                         mytable += "</td>";
@@ -690,7 +686,7 @@ function downpage() {
 	                        if(obj.cocode == 1) {
 	                        	mytable += "<b>**삭제된 글입니다**</b>"
 	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0&id=${sessionScope.id}'  onclick='return writeOk()'>"+ obj.title + "</a>";
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0&id=${sessionScope.id}'>"+ obj.title + "</a>";
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
@@ -778,7 +774,7 @@ function uppage() {
 						$("tr:has(td)").remove();
 						//console.log(">"+responsedata+"<"); 공백이 있는지 없는지 확인 할 수 있는 트릭 ~~~~~~~~~~~~~~~~~~~~~~~!!!!!!
 						var mytable;
-						
+						var dele
 						$.each(responsedata,function(index, obj){
 					
 					
@@ -800,7 +796,7 @@ function uppage() {
 	                        if(obj.cocode == 1) {
 	                        	mytable += "<b>**삭제된 글입니다**</b>"
 	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0&id=${sessionScope.id}'  onclick='return writeOk()'>"+ obj.title + "</a>";
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode="+ obj.bcode+"&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0&id=${sessionScope.id}'>"+ obj.title + "</a>";
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
@@ -851,224 +847,34 @@ function message() {
 }
 
 
-function search() {
-	event.preventDefault();
-	var searchword = $('#searchword').val();
-	console.log(searchword);
-	var pagesize = $('#pagesize :selected').val();
-	var currentpage = 1;
-	var tbc = $('#tbc').text();
-	
-	
-	if(searchword != null){
-		
-		var page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 303, "zcode" : 1, "sw" : searchword}
-	
-		$.ajax(
-				{
-					url:"boardList.do",
-					data:page_data,
-					type:"POST",       //httpReq.open("post")
-					dataType:"json", //서버가 응답하는 데이터 형식(Text(json,script,txt,html) , xml) 
-					
-					success :function(responsedata){
-						console.log(responsedata);
-						$("tr:has(td)").remove();
-						//console.log(">"+responsedata+"<"); 공백이 있는지 없는지 확인 할 수 있는 트릭 ~~~~~~~~~~~~~~~~~~~~~~~!!!!!!
-						var mytable;
-						var dele
-						$.each(responsedata,function(index, obj){
-					
-					
-							mytable+= "<tr class='unread'>"+
-	                        "<td class='inbox-small-cells'>"+
-	                        "<input type='checkbox' class='mail-checkbox'>"+
-	                        "</td>"+
-	                        "<td class='inbox-small-cells'><i class='fa fa-star'></i></td>"+
-	                        "<td class='view-message  dont-show'>";
-	                        mytable+= obj.id;
-	                        mytable+= "</td>"; 
-	                        mytable += "<td class='view-message'>";
-	                        for(var i=1; i<= obj.dept; i++){
-	                        	mytable +="&nbsp;&nbsp;&nbsp";
-	                        }
-	                        if(obj.dept > 0){
-	                        	mytable += "<img src='img/re.gif' />";
-	                        }
-	                        if(obj.cocode == 1) {
-	                        	mytable += "<b>**삭제된 글입니다**</b>"
-	                        }else{
-	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
-	                        }
-	                        mytable += "</td>";
-	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
-	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
-	                        if(obj.cocode ==1){
-	                        	mytable += "<td class='view-message  text-right'></td>";
-	    						mytable += "<td class='view-message  text-right'></td>";
-	                        }else{
-	                        	mytable += "<td class='view-message  text-right'><a href='boardDetail.do?bcode=401&edit=1&tcode=0&idx="+ obj.idx+ "&cp="+obj.cp+"&ps="+ obj.ps+"&zcode=0' class='btn mini blue'>수정</a> </td>";
-	                            mytable += "<td class='view-message  text-right'><a href='boardDelete.do?bcode=401&tcode=0&idx="+ obj.idx + "&cp="+obj.cp+"&ps="+ obj.ps+"&zcode=0' class='btn mini blue' onclick='return confirm(message())'>삭제 </a> </td>";
-	                        }
-	                        
-	                        mytable += " </tr>";
-						});
-						$('#mytable').append(mytable);
-					
-						 
-						
-						
-						
-					},
-					error:function(xhr){
-						alert(" 다운 페이지 비동기 처리 실패~~~~~" + xhr.status + " / " + xhr.statusText);
-					}
-					
-					
-					
-				});		
-					
-	}
-	
-	
-	
-}
-
-function writeOk() {
-	if('${sessionScope.id}'==''){
-		   alert('로그인이 필요합니다');
-		   return false;
-	   }
-}
-
-
-$(function(){
-	console.log("세션에 저장된 회원등급보기" +${sessionScope.grade});
-	if(${sessionScope.grade} == 2) {
-		$('#writeButton').show();
-	}else{
-		$('#writeButton').hide();
-	}
-});
-
 </script>
 
 <jsp:include page="/common/top.jsp"></jsp:include>
 <body>
 	<div class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(img/bg-img/hero.jpg)">
-		<section style='padding-top: 150px; padding-bottom: 100px'>
+		<section style='padding-top: 200px; padding-bottom: 100px'>
 			<div class="container">
 
-				<div class="mail-box">
-					<aside class="sm-side">
-						<div class="user-head">
-							<a class="inbox-avatar" href="javascript:;"
-								style="color: #341a79;"> <img width="64" height="60"
-								src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
-							</a>
-							<div class="user-name">
-								<h5>
-									<a href="#"></a>
-								</h5>
-								<span><a href="#"></a></span>
-							</div>
-							<a class="mail-dropdown pull-right" href="javascript:;"> <i
-								class="fa fa-chevron-down"></i>
-							</a>
-						</div>
-						<div class="inbox-body">
-							<a href="#myModal" data-toggle="modal" title="Compose"
-								class="btn btn-compose"> Compose </a>
-							<!-- Modal -->
-							<div aria-hidden="true" aria-labelledby="myModalLabel"
-								role="dialog" tabindex="-1" id="myModal" class="modal fade"
-								style="display: none;">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button aria-hidden="true" data-dismiss="modal" class="close"
-												type="button">×</button>
-											<h4 class="modal-title">Compose</h4>
-										</div>
-										<div class="modal-body">
-											<form role="form" class="form-horizontal">
-												<div class="form-group">
-													<label class="col-lg-2 control-label">To</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="inputEmail1"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Cc / Bcc</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="cc"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Subject</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="inputPassword1"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Message</label>
-													<div class="col-lg-10">
-														<textarea rows="10" cols="30" class="form-control" id=""
-															name=""></textarea>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<div class="col-lg-offset-2 col-lg-10">
-														<span class="btn green fileinput-button"> <i
-															class="fa fa-plus fa fa-white"></i> <span>Attachment</span>
-															<input type="file" name="files[]" multiple="">
-														</span>
-														<button class="btn btn-send" type="submit">Send</button>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-									<!-- /.modal-content -->
-								</div>
-								<!-- /.modal-dialog -->
-							</div>
-							<!-- /.modal -->
-						</div>
-						<ul class="inbox-nav inbox-divider">
-							<li><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
-									Q&A <span class="label label-danger pull-right">2</span></a></li>
-							<li class="active"><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
-							</li>
-						</ul>
-
-
-
-					</aside>
-
+				<div>
+					
 
 
 					<aside class="lg-side">
 						<div class="inbox-head">
-							<h3>Notice 게시판</h3>
-							<form  class="pull-right position" onSubmit="JavaScript:search()">
+							<h3>Notice Board</h3>
+							<!-- <form action="#" class="pull-right position">
 								<div class="input-append">
-									<input type="text" id="searchword" class="sr-input" placeholder="게시판 검색">
-									<button class="btn sr-btn" type="button" onclick="search()">
+									<input type="text" class="sr-input" placeholder="Search Mail">
+									<button class="btn sr-btn" type="button">
 										<i class="fa fa-search"></i>
 									</button>
 								</div>
-							</form>
+							</form> -->
 						</div>
 						<div class="inbox-body">
 							<div class="mail-option">
-								<div class="chk-all">
+								<!-- <div class="chk-all">
 									<input type="checkbox"
 										class="mail-checkbox mail-group-checkbox">
 									<div class="btn-group">
@@ -1082,14 +888,14 @@ $(function(){
 										</ul>
 									</div>
 								</div>
-
-								<div class="btn-group">
+ -->
+						<!-- 		<div class="btn-group">
 									<a data-original-title="Refresh" data-placement="top"
 										data-toggle="dropdown" href="#" class="btn mini tooltips">
 										<i class=" fa fa-refresh"></i>
 									</a>
-								</div>
-								<div class="btn-group hidden-phone">
+								</div> -->
+						<!-- 		<div class="btn-group hidden-phone">
 									<a data-toggle="dropdown" href="#" class="btn mini blue"
 										aria-expanded="false"> More <i class="fa fa-angle-down "></i>
 									</a>
@@ -1100,17 +906,24 @@ $(function(){
 										<li class="divider"></li>
 										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
 									</ul>
-								</div>
-								<div class="btn-group">
-									<a href="boardList.do?zcode=0&bcode=303&tcode=0&cp=1&ps=${requestScope.ps }&idx=0&id=${sessionScope.id}" class="btn mini blue">
-										전체글 보기 
+								</div> -->
+								<!-- <div class="btn-group">
+									<a data-toggle="dropdown" href="#" class="btn mini blue">
+										Move to <i class="fa fa-angle-down "></i>
 									</a>
-								</div>
+									<ul class="dropdown-menu">
+										<li><a href="#"><i class="fa fa-pencil"></i> Mark as
+												Read</a></li>
+										<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+										<li class="divider"></li>
+										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+									</ul>
+								</div> -->
 
-								<div class="btn-group" id = "writeButton">
+								<div class="btn-group">
 									<a
 										href="gotoWrite.do?zcode=0&bcode=303&tcode=0&cp=1&ps=5&idx=0&id=${sessionScope.id }"
-										class="btn mini blue" onclick="return writeOk()">글쓰기</a>
+										class="btn mini blue">글쓰기</a>
 								</div>
 								<c:set var="pagesize" value="${param.ps }"></c:set>
 								<div class="btn-group">
@@ -1191,7 +1004,7 @@ $(function(){
 														<b>**삭제된 글입니다**</b>
 													</c:when>
 													<c:otherwise>
-														<a href="boardDetail.do?edit=0&idx=${blist.idx}&bcode=${blist.bcode}&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}" onclick="return writeOk()">  ${blist.title}</a>
+														<a href="boardDetail.do?edit=0&idx=${blist.idx}&bcode=${blist.bcode}&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}">  ${blist.title}</a>
 													</c:otherwise>
 												</c:choose></td>
 
@@ -1201,31 +1014,31 @@ $(function(){
 											<td class="view-message  text-right">${blist.readnum}</td>
 
 											<c:choose>
-											<c:when test="${blist.id == sessionScope.id}">
-											<c:choose>
-													<c:when test="${blist.cocode == 1 }">
-														<td class="view-message  text-right"></td>
-															
-														<td class="view-message  text-right"></td>
-													</c:when>
-													<c:otherwise>
-														<td class="view-message  text-right"><a
-															href="boardDetail.do?bcode=401&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
-															class="btn mini blue">수정</a></td>
-														<td class="view-message  text-right"><a
-															href="boardDelete.do?bcode=401&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
-															class="btn mini blue" onclick="return confirm(message())">삭제</a>
-														</td>
-													</c:otherwise>
-												</c:choose>
-											
-											</c:when>
-											<c:otherwise>
-											<td class="view-message  text-right"></td>
-															
-														<td class="view-message  text-right"></td>
-											</c:otherwise>
-											</c:choose>
+                                 <c:when test="${blist.id == sessionScope.id}">
+                                 <c:choose>
+                                       <c:when test="${blist.cocode == 1 }">
+                                          <td class="view-message  text-right"></td>
+                                             
+                                          <td class="view-message  text-right"></td>
+                                       </c:when>
+                                       <c:otherwise>
+                                          <td class="view-message  text-right"><a
+                                             href="boardDetail.do?bcode=401&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+                                             class="btn mini blue">수정</a></td>
+                                          <td class="view-message  text-right"><a
+                                             href="boardDelete.do?bcode=401&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+                                             class="btn mini blue" onclick="return confirm(message())">삭제</a>
+                                          </td>
+                                       </c:otherwise>
+                                    </c:choose>
+                                 
+                                 </c:when>
+                                 <c:otherwise>
+                                 <td class="view-message  text-right"></td>
+                                             
+                                          <td class="view-message  text-right"></td>
+                                 </c:otherwise>
+                                 </c:choose>
 
 										</tr>
 									</c:forEach>
