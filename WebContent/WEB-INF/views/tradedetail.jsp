@@ -236,7 +236,7 @@ $(function(){
                                                             //console.log(object.replyid);
                                                             //console.log(object.replycontent);
                                                             let control = '<div class="single-comment justify-content-between d-flex" name='+object.replyid+' style="margin:2px"><div class="user justify-content-between d-flex">'
-                                                                     + '<div class="thumb"><img src="img/blog/c1.jpg" alt=""></div><div class="desc">'
+                                                                     + '<div class="thumb"><img src="img/avatar.png" alt="" width="50px" height="50px"></div><div class="desc">'
                                                                      + '<span><strong>'+object.replyid+'</strong></span>&nbsp;&nbsp;&nbsp;<span class="date">'+object.replydate+'</span>'
                                                                      + '<p class="comment">'+object.replycontent+'</p></div>'
                                                                      + '</div>'

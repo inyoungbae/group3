@@ -120,7 +120,6 @@ $(function(){
 										<button type="button" class="btn" value="List" style="margin: 2px" onclick="location.href='ReviewList.do?bcode=202&tcode=0&cp=${requestScope.cp}&ps=${requestScope.ps}'">
 											<i class="fas fa-undo-alt"></i>&nbsp;&nbsp;List
 										</button>
-										<div id="btns"></div>
 									
 								
 										<button type="button" id="editbtn" class="btn" value="Edit" style="margin: 2px" onclick="location.href='ReviewEdit.do?bcode=202&tcode=0&cp=${requestScope.cp}&ps=${requestScope.ps}&idx=${requestScope.idx}&fidx=${detail.fidx}'">
