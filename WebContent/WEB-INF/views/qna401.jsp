@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,7 +209,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head {
-	background: none repeat scroll 0 0 #125448;
+	background: none repeat scroll 0 0 #eaedea;
 	border-radius: 0 4px 0 0;
 	color: #fff;
 	min-height: 80px;
@@ -233,7 +234,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head .sr-btn {
-	background: none repeat scroll 0 0 #eaedea;
+	background: none repeat scroll 0 0 #125448;
 	border: medium none;
 	border-radius: 0 4px 4px 0;
 	color: #fff;
@@ -592,7 +593,7 @@ function showlist() {
                         
                         mytable += "</td>";
                         mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                         mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                         if(obj.cocode ==1){
                            mytable += "<td class='view-message  text-right'></td>";
@@ -702,7 +703,7 @@ function downpage() {
                            }
                            mytable += "</td>";
                            mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                           mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                           mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                            mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                            if(obj.cocode ==1){
                               mytable += "<td class='view-message  text-right'></td>";
@@ -812,7 +813,7 @@ function uppage() {
                            }
                            mytable += "</td>";
                            mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                           mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                           mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                            mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                            if(obj.cocode ==1){
                               mytable += "<td class='view-message  text-right'></td>";
@@ -909,7 +910,7 @@ function search() {
                            }
                            mytable += "</td>";
                            mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                           mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                           mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                            mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                            if(obj.cocode ==1){
                               mytable += "<td class='view-message  text-right'></td>";
@@ -959,26 +960,26 @@ function writeOk() {
          <div class="container">
 
             <div class="mail-box">
-               <aside class="sm-side">
+              <!--  <aside class="sm-side">
                   <div class="user-head">
-                     <!-- <a class="inbox-avatar" href="javascript:;"
+                     <a class="inbox-avatar" href="javascript:;"
                         style="color: #341a79;"> <img width="64" height="60"
                         src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
-                     </a> -->
+                     </a>
                      <div class="user-name">
                         <h3>Q&A Board
                            <a href="#"></a>
                         </h3>
                         <span><a href="#"></a></span>
                      </div>
-                    <!--  <a class="mail-dropdown pull-right" href="javascript:;"> <i
+                     <a class="mail-dropdown pull-right" href="javascript:;"> <i
                         class="fa fa-chevron-down"></i>
-                     </a> -->
+                     </a>
                   </div>
                   <div class="inbox-body">
-                     <!-- <a href="#myModal" data-toggle="modal" title="Compose"
-                        class="btn btn-compose"> Compose </a> -->
-                     <!-- Modal -->
+                     <a href="#myModal" data-toggle="modal" title="Compose"
+                        class="btn btn-compose"> Compose </a>
+                     Modal
                      <div aria-hidden="true" aria-labelledby="myModalLabel"
                         role="dialog" tabindex="-1" id="myModal" class="modal fade"
                         style="display: none;">
@@ -1032,28 +1033,28 @@ function writeOk() {
                                  </form>
                               </div>
                            </div>
-                           <!-- /.modal-content -->
+                           /.modal-content
                         </div>
-                        <!-- /.modal-dialog -->
+                        /.modal-dialog
                      </div>
-                     <!-- /.modal -->
+                     /.modal
                   </div>
                   <ul class="inbox-nav inbox-divider">
                      <li class="active"><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
-                           Q&A <!-- <span class="label label-danger pull-right">2</span></a></li> -->
+                           Q&A <span class="label label-danger pull-right">2</span></a></li>
                      <li><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
                      </li>
                   </ul>
 
 
 
-               </aside>
+               </aside> -->
 
 
 
                <aside class="lg-side">
                   <div class="inbox-head">
-                     <h3></h3>
+                     <h3 style = "color: #125448;">Q&A</h3>
                      <form  class="pull-right position" onSubmit="JavaScript:search()">
                         <div class="input-append">
                            <input type="text" id="searchword" class="sr-input" placeholder="게시판 검색">
@@ -1065,7 +1066,7 @@ function writeOk() {
                   </div>
                   <div class="inbox-body">
                      <div class="mail-option">
-                        <div class="chk-all">
+                       <!--  <div class="chk-all">
                            <input type="checkbox"
                               class="mail-checkbox mail-group-checkbox">
                            <div class="btn-group">
@@ -1078,15 +1079,15 @@ function writeOk() {
                                  <li><a href="#"> Unread</a></li>
                               </ul>
                            </div>
-                        </div>
-
+                        </div> -->
+<!-- 
                         <div class="btn-group">
                            <a data-original-title="Refresh" data-placement="top"
                               data-toggle="dropdown" href="#" class="btn mini tooltips">
                               <i class=" fa fa-refresh"></i>
                            </a>
-                        </div>
-                        <div class="btn-group hidden-phone">
+                        </div> -->
+                   <!--      <div class="btn-group hidden-phone">
                            <a data-toggle="dropdown" href="#" class="btn mini blue"
                               aria-expanded="false"> More <i class="fa fa-angle-down "></i>
                            </a>
@@ -1097,13 +1098,13 @@ function writeOk() {
                               <li class="divider"></li>
                               <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                            </ul>
-                        </div>
-                        <div class="btn-group">
+                        </div> -->
+                     <div class="btn-group">
                            <a href="boardList.do?zcode=0&bcode=401&tcode=0&cp=1&ps=${requestScope.ps }&idx=0&id=${sessionScope.id}" class="btn mini blue">
                               전체글 보기 
                            </a>
                            
-                        </div>
+                        </div> 
 
                         <div class="btn-group">
                            <a
@@ -1194,7 +1195,8 @@ function writeOk() {
 
                                  <td class="view-message  inbox-small-cells"><i
                                     class="fa fa-paperclip"></i></td>
-                                 <td class="view-message">${blist.writedate}</td>
+                                    <c:set var="writedate" value="${blist.writedate}" />
+											<td class="view-message">${fn:substring(writedate, 0, 10)}</td>
                                  <td class="view-message  text-right">${blist.readnum}</td>
                                  <c:choose>
                                  <c:when test="${blist.id == sessionScope.id}">

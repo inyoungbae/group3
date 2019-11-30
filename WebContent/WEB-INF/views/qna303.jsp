@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,7 +209,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head {
-	background: none repeat scroll 0 0 #125448;
+	background: none repeat scroll 0 0 #eaedea;
 	border-radius: 0 4px 0 0;
 	color: #fff;
 	min-height: 80px;
@@ -233,7 +234,7 @@ ul.labels-info li a i {
 }
 
 .inbox-head .sr-btn {
-	background: none repeat scroll 0 0 #eaedea;
+	background: none repeat scroll 0 0 #125448;
 	border: medium none;
 	border-radius: 0 4px 4px 0;
 	color: #fff;
@@ -580,7 +581,7 @@ function showlist() {
                         
                         mytable += "</td>";
                         mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
                         mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
                         if(obj.cocode ==1){
                         	mytable += "<td class='view-message  text-right'></td>";
@@ -690,7 +691,7 @@ function downpage() {
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
 	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
 	                        if(obj.cocode ==1){
 	                        	mytable += "<td class='view-message  text-right'></td>";
@@ -800,7 +801,7 @@ function uppage() {
 	                        }
 	                        mytable += "</td>";
 	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
-	                        mytable += "<td class='view-message'>" + obj.writedate + "</td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
 	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
 	                        if(obj.cocode ==1){
 	                        	mytable += "<td class='view-message  text-right'></td>";
@@ -847,6 +848,108 @@ function message() {
 }
 
 
+function search() {
+	event.preventDefault();
+	var searchword = $('#searchword').val();
+	console.log(searchword);
+	var pagesize = $('#pagesize :selected').val();
+	var currentpage = 1;
+	var tbc = $('#tbc').text();
+	
+	
+	if(searchword != null){
+		
+		var page_data = {"ps" : pagesize, "cp" : currentpage, "bcode" : 303, "zcode" : 1, "sw" : searchword}
+	
+		$.ajax(
+				{
+					url:"boardList.do",
+					data:page_data,
+					type:"POST",       //httpReq.open("post")
+					dataType:"json", //서버가 응답하는 데이터 형식(Text(json,script,txt,html) , xml) 
+					
+					success :function(responsedata){
+						console.log(responsedata);
+						$("tr:has(td)").remove();
+						//console.log(">"+responsedata+"<"); 공백이 있는지 없는지 확인 할 수 있는 트릭 ~~~~~~~~~~~~~~~~~~~~~~~!!!!!!
+						var mytable;
+						var dele
+						$.each(responsedata,function(index, obj){
+					
+					
+							mytable+= "<tr class='unread'>"+
+	                        "<td class='inbox-small-cells'>"+
+	                        "<input type='checkbox' class='mail-checkbox'>"+
+	                        "</td>"+
+	                        "<td class='inbox-small-cells'><i class='fa fa-star'></i></td>"+
+	                        "<td class='view-message  dont-show'>";
+	                        mytable+= obj.id;
+	                        mytable+= "</td>"; 
+	                        mytable += "<td class='view-message'>";
+	                        for(var i=1; i<= obj.dept; i++){
+	                        	mytable +="&nbsp;&nbsp;&nbsp";
+	                        }
+	                        if(obj.dept > 0){
+	                        	mytable += "<img src='img/re.gif' />";
+	                        }
+	                        if(obj.cocode == 1) {
+	                        	mytable += "<b>**삭제된 글입니다**</b>"
+	                        }else{
+	                        	mytable += "<a href='boardDetail.do?edit=0&idx="+ obj.idx+ "&bcode=401&cp=" + obj.cp + "&ps="+ obj.ps + "&zcode=0' onclick='return writeOk()'>"+ obj.title + "</a>";
+	                        }
+	                        mytable += "</td>";
+	                        mytable += "<td class='view-message  inbox-small-cells'><i class='fa fa-paperclip'></i></td>";
+	                        mytable += "<td class='view-message'>" + obj.writedate.substr(0,10) + "</td>";
+	                        mytable += "<td class='view-message  text-right'>" +   obj.readnum + "</td>";
+	                        if(obj.cocode ==1){
+	                        	mytable += "<td class='view-message  text-right'></td>";
+	    						mytable += "<td class='view-message  text-right'></td>";
+	                        }else{
+	                        	mytable += "<td class='view-message  text-right'><a href='boardDetail.do?bcode=401&edit=1&tcode=0&idx="+ obj.idx+ "&cp="+obj.cp+"&ps="+ obj.ps+"&zcode=0' class='btn mini blue'>수정</a> </td>";
+	                            mytable += "<td class='view-message  text-right'><a href='boardDelete.do?bcode=401&tcode=0&idx="+ obj.idx + "&cp="+obj.cp+"&ps="+ obj.ps+"&zcode=0' class='btn mini blue' onclick='return confirm(message())'>삭제 </a> </td>";
+	                        }
+	                        
+	                        mytable += " </tr>";
+						});
+						$('#mytable').append(mytable);
+					
+						 
+						
+						
+						
+					},
+					error:function(xhr){
+						alert(" 다운 페이지 비동기 처리 실패~~~~~" + xhr.status + " / " + xhr.statusText);
+					}
+					
+					
+					
+				});		
+					
+	}
+	
+	
+	
+}
+
+function writeOk() {
+	if('${sessionScope.id}'==''){
+		   alert('로그인이 필요합니다');
+		   return false;
+	   }
+}
+
+
+$(function(){
+	console.log("세션에 저장된 회원등급보기" +${sessionScope.grade});
+	if(${sessionScope.grade} == 2) {
+		$('#writeButton').show();
+		$('#editHd').show();
+	}else{
+		$('#writeButton').hide();
+		$('#editHd').hide();
+	}
+});
 </script>
 
 <jsp:include page="/common/top.jsp"></jsp:include>
@@ -862,15 +965,15 @@ function message() {
 
 					<aside class="lg-side">
 						<div class="inbox-head">
-							<h3>Notice Board</h3>
-							<!-- <form action="#" class="pull-right position">
+							<h3 style = "color: #125448;">Notice Board</h3>
+							<form action="#" class="pull-right position">
 								<div class="input-append">
-									<input type="text" class="sr-input" placeholder="Search Mail">
-									<button class="btn sr-btn" type="button">
+									<input type="text" class="sr-input" placeholder="게시판 검색">
+									<button class="btn sr-btn" type="button" onclick="search()">
 										<i class="fa fa-search"></i>
 									</button>
 								</div>
-							</form> -->
+							</form>
 						</div>
 						<div class="inbox-body">
 							<div class="mail-option">
@@ -919,6 +1022,12 @@ function message() {
 										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
 									</ul>
 								</div> -->
+								    <div class="btn-group">
+                           <a href="boardList.do?zcode=0&bcode=401&tcode=0&cp=1&ps=${requestScope.ps }&idx=0&id=${sessionScope.id}" class="btn mini blue">
+                              	전체글 보기 
+                           </a>
+                           
+                        </div> 
 
 								<div class="btn-group">
 									<a
@@ -977,8 +1086,8 @@ function message() {
 										<th class="view-message">작성일
 										</td>
 										<th class="view-message">조회수</th>
-										<th class="view-message  text-right">수정</th>
-										<th class="view-message  text-right">삭제</th>
+										<th id="editHd1" class="view-message  text-right">수정</th>
+										<th id="editHd1" class="view-message  text-right">삭제</th>
 
 									</tr>
 
@@ -1010,35 +1119,37 @@ function message() {
 
 											<td class="view-message  inbox-small-cells"><i
 												class="fa fa-paperclip"></i></td>
-											<td class="view-message">${blist.writedate}</td>
+												<c:set var="writedate" value="${blist.writedate}" />
+											<td class="view-message">${fn:substring(writedate, 0, 10)}</td>
 											<td class="view-message  text-right">${blist.readnum}</td>
 
 											<c:choose>
-                                 <c:when test="${blist.id == sessionScope.id}">
-                                 <c:choose>
-                                       <c:when test="${blist.cocode == 1 }">
-                                          <td class="view-message  text-right"></td>
-                                             
-                                          <td class="view-message  text-right"></td>
-                                       </c:when>
-                                       <c:otherwise>
-                                          <td class="view-message  text-right"><a
-                                             href="boardDetail.do?bcode=401&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
-                                             class="btn mini blue">수정</a></td>
-                                          <td class="view-message  text-right"><a
-                                             href="boardDelete.do?bcode=401&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
-                                             class="btn mini blue" onclick="return confirm(message())">삭제</a>
-                                          </td>
-                                       </c:otherwise>
-                                    </c:choose>
-                                 
-                                 </c:when>
-                                 <c:otherwise>
-                                 <td class="view-message  text-right"></td>
-                                             
-                                          <td class="view-message  text-right"></td>
-                                 </c:otherwise>
-                                 </c:choose>
+											<c:when test="${blist.id == sessionScope.id}">
+											<c:choose>
+													<c:when test="${blist.cocode == 1 }">
+														<td class="view-message  text-right"></td>
+															
+														<td class="view-message  text-right"></td>
+													</c:when>
+													<c:otherwise>
+														<td class="view-message  text-right"><a
+															href="boardDetail.do?bcode=${blist.bcode }&edit=1&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+															class="btn mini blue">수정</a></td>
+														<td class="view-message  text-right"><a
+															href="boardDelete.do?bcode=${blist.bcode }&tcode=0&idx=${blist.idx }&cp=${cp}&ps=${ps}&zcode=0&id=${sessionScope.id}"
+															class="btn mini blue" onclick="return confirm(message())">삭제</a>
+														</td>
+													</c:otherwise>
+												</c:choose>
+											
+											</c:when>
+											<c:otherwise>
+											<td class="view-message  text-right"></td>
+															
+														<td class="view-message  text-right"></td>
+											</c:otherwise>
+											</c:choose>
+
 
 										</tr>
 									</c:forEach>

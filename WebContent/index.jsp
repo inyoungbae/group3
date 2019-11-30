@@ -108,7 +108,39 @@ $(function(){
        
       }
     </script>
-
+<script type="text/javascript">
+               $(function() {
+            		   $.ajax({          
+            			   url: 'CampinglistCrossCK.do',
+                           type: 'get',
+                           dataType: 'json',
+                           success: function(responsedata){
+                        	   var val = responsedata.response.body.items.item; //rdnmadr
+                        	   var front = new Set();
+                        	   var full = new Set();
+                        	   $.each(val,function(index, obj) {
+                        		   front.add(obj.addr1.split(" ")[0]);
+                        		   full.add(obj.addr1.split(" ")[0]+" "+obj.addr1.split(" ")[1]);
+                        		   });
+                        	   var frontArr = [...front];
+                        	   var fullArr = [...full];
+                        	   for(var i=0; i<frontArr.length;i++){
+                        		   $('#sigun').append("<option id='"+frontArr[i]+"' value='"+frontArr[i]+"'>"+frontArr[i]+"</option>");
+                        	   }
+                        	   $('#sigun').change(function() {
+                        		   $('#si').empty();
+                    			   for(var i=0;i<fullArr.length;i++){
+                    				   if($('#sigun').val()==fullArr[i].split(" ")[0]){
+                    					   $('#si').append("<option value='"+fullArr[i].split(" ")[1]+"'>"+fullArr[i].split(" ")[1]+"</option>");
+                    				   }
+                    			   }
+                        	   });
+                        		   
+                        	   
+                           }
+                       });
+               });      
+           </script>
 </head>
 <style>
 .feature-content {
@@ -334,7 +366,7 @@ h2 {
                 <div class="col-12 col-lg-7">
                     <div class="single-editors-pick-area wow fadeInUp" data-wow-delay="0.2s">
                     <h4 style="text-align: center; color: white"><b>공지사항</b></h4>
-                        <table class="table" id="notice" style="background-color: rgba(0,0,0,0.7); color: white">
+                        <table class="table" id="notice" style="background-color: rgba(0,0,0,0.7); color: white; font-size: 15px">
                         	<tr style="text-align: center;">
                         	<th><b>제목</b></th>
                         	<th><b>글쓴이</b></th>
@@ -385,8 +417,8 @@ h2 {
         		  var writedate = obj.writedate;
         		  $('#notice').append("<tr id='no"+index+"'></tr>");
         		  $('#no'+index).append("<td><a href='boardDetail.do?idx="+obj.idx+"&bcode=303&ps=5&cp=1&zcode=1&edit=0' style='color:white;'>"+obj.title+"</a></td>");
-        		  $('#no'+index).append("<td>"+obj.id+"</td>");
-        		  $('#no'+index).append("<td>"+writedate.substr(0, 10)+"</td>");
+        		  $('#no'+index).append("<td style='text-align:center'>"+obj.id+"</td>");
+        		  $('#no'+index).append("<td style='text-align:center'>"+writedate.substr(0, 10)+"</td>");
         	  });
           }
           });
