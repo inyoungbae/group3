@@ -352,7 +352,7 @@
          <div class="input-group">
             <span class="input-group-addon" style=" color:#6b8e23;">
             <i class="fas fa-lock fa-2x"></i></span>
-            <input type="password" class="form-control" name="pwdcheck" id="pwdcheck" placeholder="비밀번호를 한번 더 입력하세요.(한글, 영문  8~16자)">
+            <input type="password" class="form-control" name="pwdcheck" id="pwdcheck" placeholder="비밀번호를 한번 더 입력하세요.">
             <div class="ckpwdcheck"></div>
          </div>
          </div>

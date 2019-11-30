@@ -204,7 +204,8 @@ function writeOk() {
                            <p class="address" style="text-align: left">
                               <!-- 작성일 -->
                               &nbsp;&nbsp;&nbsp;<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
-                              ${list.writedate}
+                              <c:set var="writedate" value="${list.writedate}" />
+                              ${fn:substring(writedate, 0, 10)}
                            </p>
                            <p class="address" style="text-align: left">
                               <!-- 조회수 -->
@@ -269,7 +270,7 @@ function writeOk() {
                              + object.id
                              + '</p><p class="address" style="text-align: left">'
                              + '&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-check"></i>&nbsp;&nbsp;'
-                             + object.writedate
+                             + object.writedate.substr(0, 10)
                              + '</p><p class="address" style="text-align: left">&nbsp;&nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;&nbsp;'
                                   + object.readnum
                                   + '</p></div></div></div></div>';
