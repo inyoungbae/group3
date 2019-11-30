@@ -853,118 +853,28 @@ function message() {
 <body>
 	<div class="breadcumb-area bg-img bg-overlay"
 		style="background-image: url(img/bg-img/hero.jpg)">
-		<section style='padding-top: 300px; padding-bottom: 100px'>
+		<section style='padding-top: 200px; padding-bottom: 100px'>
 			<div class="container">
 
-				<div class="mail-box">
-					<aside class="sm-side">
-						<div class="user-head">
-							<!-- <a class="inbox-avatar" href="javascript:;"
-								style="color: #341a79;"> <img width="64" height="60"
-								src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
-							</a> -->
-							<div class="user-name">
-								<h2>Notice Board
-									<a href="#"></a>
-								</h2>
-								<span><a href="#"></a></span>
-							</div>
-							<!-- <a class="mail-dropdown pull-right" href="javascript:;"> 
-							<i
-								class="fa fa-chevron-down"></i>
-							</a> -->
-						</div>
-						<div class="inbox-body">
-							<!-- <a href="#myModal" data-toggle="modal" title="Compose"
-								class="btn btn-compose"> Compose </a> -->
-							<!-- Modal -->
-							<div aria-hidden="true" aria-labelledby="myModalLabel"
-								role="dialog" tabindex="-1" id="myModal" class="modal fade"
-								style="display: none;">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button aria-hidden="true" data-dismiss="modal" class="close"
-												type="button">×</button>
-											<h4 class="modal-title">Compose</h4>
-										</div>
-										<div class="modal-body">
-											<form role="form" class="form-horizontal">
-												<div class="form-group">
-													<label class="col-lg-2 control-label">To</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="inputEmail1"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Cc / Bcc</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="cc"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Subject</label>
-													<div class="col-lg-10">
-														<input type="text" placeholder="" id="inputPassword1"
-															class="form-control">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-lg-2 control-label">Message</label>
-													<div class="col-lg-10">
-														<textarea rows="10" cols="30" class="form-control" id=""
-															name=""></textarea>
-													</div>
-												</div>
-
-												<div class="form-group">
-													<div class="col-lg-offset-2 col-lg-10">
-														<span class="btn green fileinput-button"> <i
-															class="fa fa-plus fa fa-white"></i> <span>Attachment</span>
-															<input type="file" name="files[]" multiple="">
-														</span>
-														<button class="btn btn-send" type="submit">Send</button>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-									<!-- /.modal-content -->
-								</div>
-								<!-- /.modal-dialog -->
-							</div>
-							<!-- /.modal -->
-						</div>
-						<ul class="inbox-nav inbox-divider">
-							<li><a href="boardList.do?bcode=401&cp=1&ps=10&zcode=0"><i class="fa fa-inbox"></i>
-									Q&A <!-- <span class="label label-danger pull-right">2</span></a></li> -->
-							<li  class="active"><a href="boardList.do?bcode=303&cp=1&ps=10&zcode=0"><i class="fa fa-bookmark-o"></i> Notice</a>
-							</li>
-						</ul>
-
-
-
-					</aside>
-
+				<div>
+					
 
 
 					<aside class="lg-side">
 						<div class="inbox-head">
-							<h3></h3>
-							<form action="#" class="pull-right position">
+							<h3>Notice Board</h3>
+							<!-- <form action="#" class="pull-right position">
 								<div class="input-append">
 									<input type="text" class="sr-input" placeholder="Search Mail">
 									<button class="btn sr-btn" type="button">
 										<i class="fa fa-search"></i>
 									</button>
 								</div>
-							</form>
+							</form> -->
 						</div>
 						<div class="inbox-body">
 							<div class="mail-option">
-								<div class="chk-all">
+								<!-- <div class="chk-all">
 									<input type="checkbox"
 										class="mail-checkbox mail-group-checkbox">
 									<div class="btn-group">
@@ -978,14 +888,14 @@ function message() {
 										</ul>
 									</div>
 								</div>
-
-								<div class="btn-group">
+ -->
+						<!-- 		<div class="btn-group">
 									<a data-original-title="Refresh" data-placement="top"
 										data-toggle="dropdown" href="#" class="btn mini tooltips">
 										<i class=" fa fa-refresh"></i>
 									</a>
-								</div>
-								<div class="btn-group hidden-phone">
+								</div> -->
+						<!-- 		<div class="btn-group hidden-phone">
 									<a data-toggle="dropdown" href="#" class="btn mini blue"
 										aria-expanded="false"> More <i class="fa fa-angle-down "></i>
 									</a>
@@ -996,8 +906,8 @@ function message() {
 										<li class="divider"></li>
 										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
 									</ul>
-								</div>
-								<div class="btn-group">
+								</div> -->
+								<!-- <div class="btn-group">
 									<a data-toggle="dropdown" href="#" class="btn mini blue">
 										Move to <i class="fa fa-angle-down "></i>
 									</a>
@@ -1008,7 +918,7 @@ function message() {
 										<li class="divider"></li>
 										<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<div class="btn-group">
 									<a
@@ -1144,8 +1054,3 @@ function message() {
 <jsp:include page="/common/bottom.jsp"></jsp:include>
 
 </html>
-
-
-
-
-

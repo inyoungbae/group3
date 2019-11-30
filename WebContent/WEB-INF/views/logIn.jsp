@@ -61,9 +61,7 @@ section{
 	margin: 1px;
 }
 
-#formBtn {
-	text-align: center;
-}
+
 
 #myString {
 	margin-top: 50px;
@@ -103,12 +101,11 @@ button{
 						<input type="password" name="pwd" id="pwd" placeholder="Password" class="form-control" />
 					</div>
 					<hr>
-					<div id="formBtn">
-					<!-- 	<button type="submit" value="LOGIN" class="btn btn-skin btn-scroll">LOGIN</button>
-						<button type="reset" value="CANCEL" class="btn btn-skin btn-scroll">CANCEL</button> -->
-						<button type="submit" class="btn dorne-btn" style ="width: 100px;">로그인</button>
-                        <button class="btn dorne-btn" style ="width: 100px;">메인으로</button>
-				
+					
+					<div>
+						<button type="submit" class="btn dorne-btn" style ="width: 50px;">로그인</button>
+                        <button class="btn dorne-btn" style ="width: 50px;">메인으로</button>
+			
 				   </div>
 					
 				</form>

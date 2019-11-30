@@ -55,6 +55,21 @@
 <!-- jquery 추가함 iy -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<style type="text/css">
+#titlehover:hover {
+ background-color: #E6E6E6;
+ color: red;
+ 
+}
+
+#titlehover:visited {
+ background-color: #E6E6E6;
+
+ color : red;
+}
+
+</style>
+
 </head>
 
 <jsp:include page="/common/top.jsp"></jsp:include>
@@ -62,8 +77,6 @@
 
 $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바뀌는 코드 
    
-
-
        if ($('#tcode').val() != 2){
           console.log($('.titles :checked').val());
           console.log("판매완료");   
@@ -72,30 +85,8 @@ $(document).ready(function(){ //판매중 1 판매완료 2 라디오 버튼 바�
        }
 
  });
-/*  $(document).ready(function(){
 
-    if ($('#tcode').val != 2){
-       System.out.println("판매완료");   
-    }else if ($('#tcode').val == 1) {
-       System.out.println("판매중");
-    }else{
-       System.out.println("상품 없음");
-    }
- 
- }); */
 
-<%-- <%
-   int tcode = 0;
-
-   if(tcode != 2) {
-     System.out.println("판매완료");
-   }else if(tcode == 1){
-      System.out.println("판매중");
-   }else{
-      System.out.println("상품 없음");
-   }
-
-%> --%>
 function writeOk() {
 	   if('${sessionScope.id}'==''){
 	         alert('로그인이 필요합니다');
@@ -116,7 +107,6 @@ function writeOk() {
       <!-- Start post Area -->
 
 
-
       <section class="post-area section-gap" style="padding-top: 200px;">
 
          <div class="section-heading text-center animated fadeInDown">
@@ -134,21 +124,14 @@ function writeOk() {
 
             </a>
                <input type= "text" name="campgnm" id="campgnm" placeholder="검색어를 입력하세요" style ="width:30%; height:52px;">
-    <button type="submit" id="button" name="button" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+              <button type="submit" id="searchbtn" name="searchbtn" class="btn dorne-btn" style ="width: 200px; background-color:#125448;"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
 
+<br>
+<br>
+<hr>
 
-     <!--        <div class="single-widget search-widget">
-               <form class="example" action="#" style="margin: auto; max-width: 500px">
-               
-                                
-                  <input type="text" placeholder="Search Posts" name="search2">
-                  <button type="submit">
-                     <i class="fa fa-search" style="color: #6b8e23"></i>
-                  </button>
-               </form>
-            </div> -->
             
-            <div class="container">
+            <div class="container" style="margin-bottom: 5%">
                <div class="row">
                   <div class="col-sm ">PageSize설정:</div>
                   <div class="col-sm">
@@ -174,7 +157,7 @@ function writeOk() {
             </div>
             
             
-            <br>
+            
             <div class="container">
                <div class="row">
                   <div class="col-sm ">
@@ -201,20 +184,11 @@ function writeOk() {
                </div>
             </div>
 
-<!-- 
-<div class="news_sch_wrap" style> 
-
-<p> 
-<label for="sch_bar" class=a11y> 검색어</label>
-<input type="text" name="sch_bar" id="sch_bar" placeholder="검색어를 입력해 주세요."> 
-<span ><a href="" class="newBoardSearchBtn"><i class="fa fa-search" style="color: #6b8e23"></i></a></span>
-</p>
-</div> -->
-
+   <div id="reviewbox">
 
             <c:forEach var="list" items="${requestScope.boardfile}" varStatus="status">
             <input type="hidden"  name="idx" value="${list.idx}">
-               <div class="container">
+               <div class="container" id="inyoung">
 
                   <div class="row justify-content-center d-flex"></div>
                   <div class="col-lg-12 post-list">
@@ -222,70 +196,130 @@ function writeOk() {
                      <br>
 
                      <div class="single-post d-flex flex-row">
-                        <div class="thumb">
-                        
-                        <img src="upload/${list.savename}" name="oriname" alt="후기사진입니다." style="width: 400px">
-                     
+                        <div class="thumb"  style="margin-right:5%">
+                        <img src="upload/${list.savename}" name="oriname" style="width: 250px" onerror="this.src='./img/bg-img/noimage.gif'">
                         </div>
-                        <div class="details" >
+                        <div class="details" style="margin-top: 1%">
                            <div class="title d-flex flex-row justify-content-between">
-                           <div class= "trading on"> <br><!-- 제목 -->
+                           <div class= "trading on" id="titlehover" style="font-size: 13px;"> 
+                           <!-- 제목 -->
                                  <a href="TradeDetail.do?idx=${list.idx}&cp=${cp}&ps=${ps}">
-                                 <h4 style ="text-align: center">&nbsp;&nbsp; ${list.title}</h4></a> </div>
+                                 <h4>&nbsp;&nbsp; ${list.title}</h4>
+                                 </a> 
+                                 </div>
                               <div class="titles" style = "margin-left: 300px;">
                               <br>
                                  <a href="TradeDetail.do?idx=${list.idx}&cp=${cp}&ps=${ps}">
                                  <c:choose>
-                                 <%-- <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;${list.tcode}<i class="fas fa-cart-plus fa-3x" style ="color:#6b8e23;"></i></h4></a>  --%>
                                  <c:when test="${list.tcode==1}">
-                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매중<i class="fas fa-cart-plus fa-3x" style ="color:#6b8e23;"></i></h4></a>
+                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매중<i class="fas fa-cart-plus fa-3x" style ="color:#125448;"></i></h4></a>
                                  </c:when>
                                  <c:otherwise>
-                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매완료<i class="fas fa-shopping-cart fa-3x" style ="color:#6b8e23;"></i></h4></a>
+                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매완료<i class="fas fa-shopping-cart fa-3x" style ="color:#125448;"></i></h4></a>
                                  </c:otherwise>
                                  </c:choose>
-                                 
-                                 
+                     
                               </div>
                            </div>
-                           <p style="text-align: left"> <!-- 글내용 -->
-                              &nbsp;&nbsp;&nbsp;&nbsp; ${list.content}  
-                           </p>
-                           <p class="address">
-                              &nbsp;&nbsp;&nbsp;<i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                                         장소를 여기에 적을거예요.
-                           </p>
-                           <p class="address" style="text-align: center">
+                           <p class="address"  style="text-align: left">
                               &nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;
                               ${list.id}
                            </p>
-                           <p class="address" style="text-align: center"><!-- 작성일 -->
+                           <p class="address"  style="text-align: left">
+                           <!-- 작성일 -->
                               &nbsp;&nbsp;&nbsp;<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                               ${list.writedate}
                            </p>
-                              <p class="address" style="text-align: center"><!-- 조회수 -->
+                              <p class="address"  style="text-align: left"><!-- 조회수 -->
                               &nbsp;&nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;&nbsp;
                               ${list.readnum}
                            </p>
-                           <p>${status.count}</p>
-                      
-<%--                            <button type="submit" id="editwbtn" class="btn dorne-btn" style="width: 200px; margin-left: 50px;"  onclick="check()">
-            <a href = "TradeEdit.do?bcode=102&tcode=1&idx=${list.idx}&fidx=${list.fidx}" style ="color:#fff;" class="btn mini black">Edit</a></button>
-                        <button type="submit" id="deletewbtn" class="btn dorne-btn" style="width: 200px;" onclick="check()">
-            <a href = "TradeDelete.do?bcode=102&tcode=0&idx=${list.idx}&fidx=${list.fidx}"   style = "color:#fff;" class="btn mini black">Delete</a></button> --%>
-                      
                         </div>
                      </div>
                   </div>
                </div>
             </c:forEach>
      
-  
-
-    
+  </div>
        </div>
       </section>
       
+     <script type="text/javascript">
+      $(function() {
+
+
+          $('#searchbtn').click(function(){
+             var paramdata = {
+                     "bcode" : 102,
+                      "cp" : '${requestScope.cp}',
+                      "ps" : '${requestScope.ps}',
+                      "searchword" : $('#campgnm').val()
+                    }
+             
+                if($('#campgnm').val() == ""){
+                 alert("검색어를 입력하세요.");
+                 $('#campgnm').focus();
+              }else{
+                console.log("여보세요? " + $('#campgnm').val());
+
+                 var control ="";
+             $.ajax({
+                url : "ReviewSearch.do",
+                dataType:"JSON",
+                data: paramdata,
+                type:"get",
+                success: function(data){
+            	   console.log("여기는 서치 비동기!");
+                   console.log(data);
+                  $('#reviewbox').empty();
+                   $.each(data, function(index, object) {
+                      console.log(object);
+                      console.log(object.idx);
+                      
+                       control =
+                             '<div class="container"><div class="row justify-content-center d-flex"></div><div class="col-lg-12 post-list" id="reviewdiv">'
+                             +'<div class="single-post d-flex flex-row">'
+                             + '<div class="thumb" style="margin-right:5%; ">'
+                             + '<img style="width: 250px" src="upload/'+object.savename+'" onerror="this.src='+'\'./img/bg-img/noimage.gif\''+'">'
+                             + '</div><div class="details" style="margin-top: 1%">'
+                             + '<div class="title d-flex flex-row justify-content-between">'
+                             + '<div class="titles" id="titlehover" style="font-size: 13px;">'
+                             + '<a href="ShowReviewDetail.do?idx='+object.idx+'&cp=${requestScope.cp}&ps=${requestScope.ps}" onclick="return writeOk()">'
+                             + '<h4>&nbsp;&nbsp;'+object.title+'</h4></a></div></div>'
+                             + '<p style="text-align: left; font-size: 13px;">'
+                             + '<p class="address" style="text-align: left">'
+                             + '&nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;'
+                             + object.id
+                             + '</p><p class="address" style="text-align: left">'
+                             + '&nbsp;&nbsp;&nbsp;<i class="far fa-calendar-check"></i>&nbsp;&nbsp;'
+                             + object.writedate
+                             + '</p><p class="address" style="text-align: left">&nbsp;&nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;&nbsp;'
+                                  + object.readnum
+                                  + '</p></div></div></div></div>';
+                                  
+
+                                  
+                                  $('#reviewbox').append(control);
+                                  
+                   })
+               }, error:function(xhr){
+                   alert("서치 비동기실패" + xhr.status + " / " + xhr.statusText);
+               }
+             })
+            }
+          })
+
+      })
+
+
+
+      
+       
+
+      </script>
+
+ 
+ 
  
       
 

@@ -955,7 +955,7 @@ function writeOk() {
 <body>
    <div class="breadcumb-area bg-img bg-overlay"
       style="background-image: url(img/bg-img/hero.jpg)">
-      <section style='padding-top: 260px; padding-bottom: 100px'>
+      <section style='padding-top: 200px; padding-bottom: 100px'>
          <div class="container">
 
             <div class="mail-box">
@@ -1240,7 +1240,3 @@ function writeOk() {
 <jsp:include page="/common/bottom.jsp"></jsp:include>
 
 </html>
-
-
-
-
