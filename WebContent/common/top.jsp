@@ -35,9 +35,14 @@
                                 <li class="nav-item">
                                 <a class="nav-link" href="boardList.do?bcode=401&cp=1&ps=10&zcode=0" >Q&A</a>
                                 </li>
-                                 <li>
+                                 <!-- <li>
                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                 </li>
+                                 </li> -->
+                                </ul>
+                        </div>
+                        
+                                     <div class="collapse navbar-collapse" id="dorneNav">
+                                     <ul class="navbar-nav mr-auto" id="dorneMenu" style = "margin-left: 300px;">
 	                                <c:choose>
  	   								<c:when test="${id!=null && grade == '2'}">
  	   								<li class="nav-item">
@@ -64,9 +69,11 @@
    										</li>
                               	</c:otherwise>
 								</c:choose>
-                         
-                            </ul>
-                        </div>
+                              </ul>
+                              </div>
+                              
+                              
+                       
                     </nav>
                 </div>
             </div>
