@@ -134,11 +134,10 @@ function writeOk() {
 <br>
 <hr>
 
-            
-            <div class="container" style="margin-bottom: 5%">
+        <div style="margin-left: 20%; margin-right: 20%">    
+            <div class="container">
                <div class="row">
-                  <div class="col-sm ">PageSize설정 : </div>
-                  <div class="col-sm">
+                  <div class="col-sm-4">
                   <form name="list">
                   <input type="hidden" name="cp" value="1">
                   <input type="hidden" name="bcode" value="102">
@@ -156,15 +155,7 @@ function writeOk() {
                      </select>
                      </form>
                   </div>
-                  <div class="col-sm ">&nbsp;&nbsp;&nbsp;&nbsp;총 게시물수 : ${totalcount}</div>
-               </div>
-            </div>
-            
-            
-            
-            <div class="container">
-               <div class="row">
-                  <div class="col-sm ">
+                  <div class="col-sm-4">
                      <!--이전 링크 -->
                      <c:if test="${cp>1}">
                         <a href="TradeList.do?cp=${cp-1}&ps=${ps}&bcode=102"><i class="fas fa-chevron-circle-left" ></i></a>
@@ -185,8 +176,11 @@ function writeOk() {
                         <a href="TradeList.do?cp=${cp+1}&ps=${ps}&bcode=102"><i class="fas fa-chevron-circle-right" ></i></a>
                      </c:if>
                   </div>
+                  <div class="col-sm-4" style="text-align: right">총 게시물수 : ${totalcount}</div>
                </div>
             </div>
+            
+            
 
 
    <div id="reviewbox">
@@ -215,23 +209,11 @@ function writeOk() {
                                  <h4>&nbsp;&nbsp; ${list.title}</h4>
                                  </a> 
                                  </div>
-                           
-                            <div class="col-lg-2">
-                               <div class="titles">
-                              <br>
-                                 <c:choose>
-                                 <c:when test="${list.tcode==1}">
-                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매중<i class="fas fa-cart-plus fa-2x" style ="color:#FA8072;"></i></h4></a>
-                                 </c:when>
-                                 <c:otherwise>
-                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매완료<i class="fas fa-shopping-cart fa-2x" style ="color:#125448;"></i></h4></a>
-                                 </c:otherwise>
-                                 </c:choose>
-                     
-                              </div>
-                           </div>
 
+                         
                            </div>
+                               
+
                            <p class="address"  style="text-align: left">
                               &nbsp;&nbsp;&nbsp;<i class="fas fa-user"></i>&nbsp;&nbsp;
                               ${list.id}
@@ -246,12 +228,25 @@ function writeOk() {
                               &nbsp;&nbsp;&nbsp;<i class="far fa-eye"></i>&nbsp;&nbsp;
                               ${list.readnum}
                            </p>
+                            <div class="titles">
+                                 <a href="TradeDetail.do?idx=${list.idx}&cp=${cp}&ps=${ps}">
+                                 <c:choose>
+                                 <c:when test="${list.tcode==1}">
+                                    <h4 id ="tcode">&nbsp;&nbsp;판매중<i class="fas fa-cart-plus fa-2x" style ="color:#FA8072;"></i></h4></a>
+                                 </c:when>
+                                 <c:otherwise>
+                                    <h4 id ="tcode" style ="text-align: center">&nbsp;&nbsp;판매완료<i class="fas fa-shopping-cart fa-2x" style ="color:#125448;"></i></h4></a>
+                                 </c:otherwise>
+                                 </c:choose>
+                     
+                              </div>
                         </div>
                      </div>
                   </div>
                </div>
             </c:forEach>
      
+  </div>
   </div>
        </div>
       </section>
